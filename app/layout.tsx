@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   description: "A digital platform built for Indian Exporters, Buyers and Freight Forwarders to connect, collaborate and grow globally.",
   icons: {
     icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
   }
 };
 

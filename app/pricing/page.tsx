@@ -119,7 +119,7 @@ export default function Pricing() {
     <div className="min-h-screen bg-white text-gray-800 font-sans selection:bg-exim-green selection:text-white pb-16 overflow-x-hidden">
       
       {/* 1. HERO SECTION WITH DIAGONAL SPLIT */}
-      <section className="relative overflow-hidden min-h-[380px] lg:min-h-[460px] flex items-center bg-white border-b border-gray-100">
+      <section className="relative overflow-hidden min-h-[380px] lg:min-h-[460px] flex flex-col lg:flex-row lg:items-center bg-white border-b border-gray-100">
         {/* Background Cargo Ship Image (Desktop) */}
         <div className="absolute inset-0 z-0 hidden lg:block select-none pointer-events-none">
           <Image
@@ -137,13 +137,13 @@ export default function Pricing() {
         </div>
 
         {/* Mobile View Top Image Banner */}
-        <div className="w-full lg:hidden relative h-48 sm:h-64 z-0 animate-fade-in">
+        <div className="w-full lg:hidden relative h-48 sm:h-64 z-0 animate-fade-in overflow-hidden">
           <Image
             src="/ship.png"
             alt="Cargo Ship Pricing Banner"
             fill
             priority
-            className="object-cover object-center"
+            className="object-cover object-right scale-[1.7] origin-right"
           />
         </div>
 
