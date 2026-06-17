@@ -1,6 +1,80 @@
 "use client";
 
+import { useEffect, useRef, useState, ReactNode } from "react";
 import Image from "next/image";
+
+interface ScrollRevealProps {
+  children: ReactNode;
+  className?: string;
+  delay?: number; // in milliseconds
+  duration?: number; // in milliseconds
+  direction?: "up" | "down" | "left" | "right" | "none";
+}
+
+function ScrollReveal({
+  children,
+  className = "",
+  delay = 0,
+  duration = 800,
+  direction = "up",
+}: ScrollRevealProps) {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.05,
+      }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
+
+  const getDirectionStyle = () => {
+    switch (direction) {
+      case "up":
+        return isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0";
+      case "down":
+        return isVisible ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0";
+      case "left":
+        return isVisible ? "translate-x-0 opacity-100" : "translate-x-12 opacity-0";
+      case "right":
+        return isVisible ? "translate-x-0 opacity-100" : "-translate-x-12 opacity-0";
+      case "none":
+        return isVisible ? "opacity-100" : "opacity-0";
+      default:
+        return "";
+    }
+  };
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-all ease-[cubic-bezier(0.16,1,0.3,1)] ${getDirectionStyle()} ${className}`}
+      style={{
+        transitionDuration: `${duration}ms`,
+        transitionDelay: `${delay}ms`,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
 
 // Custom authentic-looking SVG QR Code
 const QRCodeSVG = () => (
@@ -50,13 +124,13 @@ const QRCodeSVG = () => (
 
 export default function AppDownload() {
   return (
-    <div className="min-h-screen bg-white text-gray-800 font-open-sans selection:bg-exim-green selection:text-white">
+    <div className="min-h-screen bg-white text-gray-800 font-open-sans selection:bg-exim-green selection:text-white overflow-x-hidden">
       {/* 1. HERO SECTION */}
       <section className="relative bg-white overflow-hidden">
         {/* Mobile Layout (lg:hidden) */}
         <div className="block lg:hidden">
           {/* Text content first */}
-          <div className="px-6 py-8 flex flex-col bg-gradient-to-b from-[#f8fafc] to-white">
+          <div className="px-6 py-8 flex flex-col bg-gradient-to-b from-[#f8fafc] to-white animate-fade-in-up">
             {/* Tag */}
             <span className="text-exim-green font-bold text-xs tracking-wider uppercase mb-3 block">
               DOWNLOAD THE EXIM CONNECT APP
@@ -77,7 +151,7 @@ export default function AppDownload() {
 
             {/* Badges */}
             <div className="flex items-center gap-3 mt-6">
-              <a href="#" className="hover:opacity-90 transition-opacity">
+              <a href="#" className="hover:scale-105 active:scale-98 transition-transform duration-200">
                 <div className="bg-black text-white px-3 py-1.5 rounded-lg flex items-center gap-1.5 border border-gray-800 shadow-md">
                   <svg
                     className="w-4 h-4 text-white"
@@ -96,7 +170,7 @@ export default function AppDownload() {
                   </div>
                 </div>
               </a>
-              <a href="#" className="hover:opacity-90 transition-opacity">
+              <a href="#" className="hover:scale-105 active:scale-98 transition-transform duration-200">
                 <div className="bg-black text-white px-3 py-1.5 rounded-lg flex items-center gap-1.5 border border-gray-800 shadow-md">
                   <svg
                     className="w-4 h-4 text-white"
@@ -119,13 +193,13 @@ export default function AppDownload() {
           </div>
 
           {/* Banner image below */}
-          <div className="w-full relative aspect-[16/10] bg-white">
+          <div className="w-full relative aspect-[16/10] bg-white animate-fade-in">
             <Image
               src="/mob.png"
               alt="EXIM Connect App Mockups"
               fill
               priority
-              className="object-contain"
+              className="object-contain animate-float"
             />
           </div>
 
@@ -222,7 +296,7 @@ export default function AppDownload() {
 
         {/* Desktop Layout (lg:block hidden) */}
         <div
-          className="hidden lg:block relative w-full h-[600px] bg-white"
+          className="hidden lg:block relative w-full h-[600px] bg-white animate-fade-in"
           style={{
             backgroundImage: "url('/mob.png')",
             backgroundSize: "contain",
@@ -233,7 +307,7 @@ export default function AppDownload() {
           {/* Text overlay */}
           <div className="absolute inset-0 flex items-center z-10">
             <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-12">
-              <div className="col-span-7 flex flex-col justify-center">
+              <div className="col-span-7 flex flex-col justify-center animate-fade-in-up">
                 {/* Tag */}
                 <span className="text-exim-green font-bold text-xs tracking-wider uppercase mb-3 block">
                   DOWNLOAD THE EXIM CONNECT APP
@@ -254,7 +328,7 @@ export default function AppDownload() {
 
                 {/* Badges */}
                 <div className="flex flex-wrap items-center gap-4 mt-8">
-                  <a href="#" className="hover:opacity-90 transition-opacity">
+                  <a href="#" className="hover:scale-105 active:scale-98 transition-transform duration-200">
                     <div className="bg-black text-white px-4 py-2 rounded-xl flex items-center gap-2 border border-gray-800 shadow-md">
                       <svg
                         className="w-5 h-5 text-white"
@@ -273,7 +347,7 @@ export default function AppDownload() {
                       </div>
                     </div>
                   </a>
-                  <a href="#" className="hover:opacity-90 transition-opacity">
+                  <a href="#" className="hover:scale-105 active:scale-98 transition-transform duration-200">
                     <div className="bg-black text-white px-4 py-2 rounded-xl flex items-center gap-2 border border-gray-800 shadow-md">
                       <svg
                         className="w-5 h-5 text-white"
@@ -372,7 +446,7 @@ export default function AppDownload() {
                   ].map((feat, idx) => (
                     <div
                       key={idx}
-                      className="flex flex-col items-center text-center"
+                      className="flex flex-col items-center text-center hover:scale-105 transition-transform"
                     >
                       <div className="w-10 h-10 rounded-full bg-[#f0f7f3] text-exim-green flex items-center justify-center mb-2">
                         {feat.icon}
@@ -392,12 +466,14 @@ export default function AppDownload() {
       {/* 2. EVERYTHING YOU NEED, ALL IN ONE APP */}
       <section className="py-16 bg-white border-t border-gray-100">
         <div className="text-center max-w-3xl mx-auto px-6">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-exim-navy inline-block relative pb-2">
-            Everything You Need,{" "}
-            <span className="text-[#002244] border-b-2 border-exim-green">
-              All in One App
-            </span>
-          </h2>
+          <ScrollReveal>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-exim-navy inline-block relative pb-2">
+              Everything You Need,{" "}
+              <span className="text-[#002244] border-b-2 border-exim-green">
+                All in One App
+              </span>
+            </h2>
+          </ScrollReveal>
         </div>
 
         {/* 6 Grid Cards */}
@@ -523,20 +599,21 @@ export default function AppDownload() {
               ),
             },
           ].map((card, idx) => (
-            <div
-              key={idx}
-              className="bg-white border border-gray-100 rounded-[24px] p-8 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center"
-            >
-              <div className="w-14 h-14 rounded-full bg-[#f0f7f3] text-exim-green flex items-center justify-center mb-5 shrink-0">
-                {card.icon}
+            <ScrollReveal key={idx} delay={idx * 80} className="h-full">
+              <div
+                className="bg-white border border-gray-100 rounded-[24px] p-8 shadow-sm hover:shadow-[0_10px_25px_rgba(19,156,94,0.12)] hover:border-exim-green/20 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center h-full group"
+              >
+                <div className="w-14 h-14 rounded-full bg-[#f0f7f3] text-exim-green flex items-center justify-center mb-5 shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  {card.icon}
+                </div>
+                <h3 className="font-extrabold text-lg text-exim-navy mb-3">
+                  {card.title}
+                </h3>
+                <p className="text-gray-500 text-xs sm:text-sm font-semibold leading-relaxed">
+                  {card.desc}
+                </p>
               </div>
-              <h3 className="font-extrabold text-lg text-exim-navy mb-3">
-                {card.title}
-              </h3>
-              <p className="text-gray-500 text-xs sm:text-sm font-semibold leading-relaxed">
-                {card.desc}
-              </p>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </section>
@@ -644,120 +721,124 @@ export default function AppDownload() {
           </div>
 
           {/* Desktop Layout (hidden lg:block) */}
-          <div
-            className="hidden lg:block w-full rounded-[32px] bg-[#f4faf7] overflow-hidden relative h-[440px]"
-            style={{
-              backgroundImage: "url('/map.png')",
-              backgroundSize: "contain",
-              backgroundPosition: "right center",
-              backgroundRepeat: "no-repeat",
-            }}
-          >
-            {/* Content overlay */}
-            <div className="absolute inset-0 flex items-center px-12">
-              <div className="max-w-7xl w-full grid grid-cols-12 items-center">
-                <div className="col-span-7 flex flex-col justify-center z-10">
-                  <h2 className="text-[32px] font-extrabold text-exim-navy leading-tight">
-                    Download the EXIM Connect App
-                  </h2>
-                  <p className="text-gray-500 text-sm mt-2 font-semibold">
-                    Scan the QR code or download from your favorite store.
-                  </p>
+          <ScrollReveal>
+            <div
+              className="hidden lg:block w-full rounded-[32px] bg-[#f4faf7] overflow-hidden relative h-[440px]"
+              style={{
+                backgroundImage: "url('/map.png')",
+                backgroundSize: "contain",
+                backgroundPosition: "right center",
+                backgroundRepeat: "no-repeat",
+              }}
+            >
+              {/* Content overlay */}
+              <div className="absolute inset-0 flex items-center px-12">
+                <div className="max-w-7xl w-full grid grid-cols-12 items-center">
+                  <div className="col-span-7 flex flex-col justify-center z-10">
+                    <h2 className="text-[32px] font-extrabold text-exim-navy leading-tight">
+                      Download the EXIM Connect App
+                    </h2>
+                    <p className="text-gray-500 text-sm mt-2 font-semibold">
+                      Scan the QR code or download from your favorite store.
+                    </p>
 
-                  {/* QR Codes Grid */}
-                  <div className="grid grid-cols-2 gap-6 mt-8">
-                    {/* iOS Store */}
-                    <div className="bg-white border border-gray-100 rounded-2xl p-5 flex items-center gap-4 shadow-sm">
-                      <QRCodeSVG />
-                      <div className="flex flex-col gap-2">
-                        <div className="bg-black text-white px-3 py-1.5 rounded-lg flex items-center gap-1.5 border border-gray-800 shadow-sm w-36">
-                          <svg
-                            className="w-4.5 h-4.5 text-white shrink-0"
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-.96.04-2.13.64-2.82 1.45-.6.7-1.13 1.84-.99 2.94.97.08 2.16-.52 2.82-1.33z" />
-                          </svg>
-                          <div className="flex flex-col text-left">
-                            <span className="text-[6px] uppercase tracking-wider text-gray-400 font-medium leading-none">
-                              Download on the
-                            </span>
-                            <span className="text-[9px] font-bold leading-none mt-0.5">
-                              App Store
-                            </span>
+                    {/* QR Codes Grid */}
+                    <div className="grid grid-cols-2 gap-6 mt-8">
+                      {/* iOS Store */}
+                      <div className="bg-white border border-gray-100 rounded-2xl p-5 flex items-center gap-4 shadow-sm hover:scale-102 transition-transform duration-200">
+                        <QRCodeSVG />
+                        <div className="flex flex-col gap-2">
+                          <div className="bg-black text-white px-3 py-1.5 rounded-lg flex items-center gap-1.5 border border-gray-800 shadow-sm w-36">
+                            <svg
+                              className="w-4.5 h-4.5 text-white shrink-0"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-.96.04-2.13.64-2.82 1.45-.6.7-1.13 1.84-.99 2.94.97.08 2.16-.52 2.82-1.33z" />
+                            </svg>
+                            <div className="flex flex-col text-left">
+                              <span className="text-[6px] uppercase tracking-wider text-gray-400 font-medium leading-none">
+                                Download on the
+                              </span>
+                              <span className="text-[9px] font-bold leading-none mt-0.5">
+                                App Store
+                              </span>
+                            </div>
                           </div>
+                          <span className="text-[10px] font-bold text-gray-400">
+                            For iOS 13.0 and above
+                          </span>
                         </div>
-                        <span className="text-[10px] font-bold text-gray-400">
-                          For iOS 13.0 and above
-                        </span>
+                      </div>
+
+                      {/* Google Play */}
+                      <div className="bg-white border border-gray-100 rounded-2xl p-5 flex items-center gap-4 shadow-sm hover:scale-102 transition-transform duration-200">
+                        <QRCodeSVG />
+                        <div className="flex flex-col gap-2">
+                          <div className="bg-black text-white px-3 py-1.5 rounded-lg flex items-center gap-1.5 border border-gray-800 shadow-sm w-36">
+                            <svg
+                              className="w-4.5 h-4.5 text-white shrink-0"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M5.23 3c-.115.025-.23.07-.33.14l10.96 10.96 3.12-3.12-13.43-7.73c-.106-.062-.218-.088-.32-.05zm-1.6 1.48c-.062.158-.09.344-.09.55v13.94c0 .206.028.392.09.55l7.98-7.98-7.98-8.01zm9.64 6.53L3.89 21c.102.03.214.004.32-.058l13.43-7.73-3.12-3.12-1.24 1.25z" />
+                            </svg>
+                            <div className="flex flex-col text-left">
+                              <span className="text-[6px] uppercase tracking-wider text-gray-400 font-medium leading-none">
+                                Get it on
+                              </span>
+                              <span className="text-[9px] font-bold leading-none mt-0.5">
+                                Google Play
+                              </span>
+                            </div>
+                          </div>
+                          <span className="text-[10px] font-bold text-gray-400">
+                            For Android 7.0 and above
+                          </span>
+                        </div>
                       </div>
                     </div>
 
-                    {/* Google Play */}
-                    <div className="bg-white border border-gray-100 rounded-2xl p-5 flex items-center gap-4 shadow-sm">
-                      <QRCodeSVG />
-                      <div className="flex flex-col gap-2">
-                        <div className="bg-black text-white px-3 py-1.5 rounded-lg flex items-center gap-1.5 border border-gray-800 shadow-sm w-36">
-                          <svg
-                            className="w-4.5 h-4.5 text-white shrink-0"
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M5.23 3c-.115.025-.23.07-.33.14l10.96 10.96 3.12-3.12-13.43-7.73c-.106-.062-.218-.088-.32-.05zm-1.6 1.48c-.062.158-.09.344-.09.55v13.94c0 .206.028.392.09.55l7.98-7.98-7.98-8.01zm9.64 6.53L3.89 21c.102.03.214.004.32-.058l13.43-7.73-3.12-3.12-1.24 1.25z" />
-                          </svg>
-                          <div className="flex flex-col text-left">
-                            <span className="text-[6px] uppercase tracking-wider text-gray-400 font-medium leading-none">
-                              Get it on
-                            </span>
-                            <span className="text-[9px] font-bold leading-none mt-0.5">
-                              Google Play
-                            </span>
-                          </div>
-                        </div>
-                        <span className="text-[10px] font-bold text-gray-400">
-                          For Android 7.0 and above
-                        </span>
+                    {/* Bottom check banner */}
+                    <div className="mt-8 bg-white border border-[#e8f5ed] rounded-xl px-5 py-3.5 flex items-center gap-3 inline-flex">
+                      <div className="w-5.5 h-5.5 rounded-full bg-[#e8f5ed] text-exim-green flex items-center justify-center shrink-0">
+                        <svg
+                          className="w-3.5 h-3.5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={3.5}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
                       </div>
+                      <span className="text-xs sm:text-sm font-extrabold text-exim-navy">
+                        Trusted by thousands of users across the globe.
+                      </span>
                     </div>
-                  </div>
-
-                  {/* Bottom check banner */}
-                  <div className="mt-8 bg-white border border-[#e8f5ed] rounded-xl px-5 py-3.5 flex items-center gap-3 inline-flex">
-                    <div className="w-5.5 h-5.5 rounded-full bg-[#e8f5ed] text-exim-green flex items-center justify-center shrink-0">
-                      <svg
-                        className="w-3.5 h-3.5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={3.5}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                    </div>
-                    <span className="text-xs sm:text-sm font-extrabold text-exim-navy">
-                      Trusted by thousands of users across the globe.
-                    </span>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* 4. WHY USERS LOVE EXIM CONNECT */}
       <section className="py-16 bg-[#fcfdfe]">
         <div className="text-center max-w-3xl mx-auto px-6">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-exim-navy inline-block relative pb-2">
-            Why Users Love{" "}
-            <span className="text-[#002244] border-b-2 border-exim-green">
-              EXIM Connect
-            </span>
-          </h2>
+          <ScrollReveal>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-exim-navy inline-block relative pb-2">
+              Why Users Love{" "}
+              <span className="text-[#002244] border-b-2 border-exim-green">
+                EXIM Connect
+              </span>
+            </h2>
+          </ScrollReveal>
         </div>
 
         {/* Testimonials 4 Grid */}
@@ -845,25 +926,26 @@ export default function AppDownload() {
               ),
             },
           ].map((item, idx) => (
-            <div
-              key={idx}
-              className="bg-white border border-gray-100 rounded-[20px] p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition-all duration-300"
-            >
-              <div>
-                <div className="w-10 h-10 rounded-full bg-[#f0f7f3] text-exim-green flex items-center justify-center mb-4 shrink-0">
-                  {item.icon}
+            <ScrollReveal key={idx} delay={idx * 100} className="h-full">
+              <div
+                className="bg-white border border-gray-100 rounded-[20px] p-6 shadow-sm flex flex-col justify-between hover:shadow-[0_10px_25px_rgba(19,156,94,0.12)] hover:border-exim-green/20 hover:-translate-y-1.5 transition-all duration-300 h-full group"
+              >
+                <div>
+                  <div className="w-10 h-10 rounded-full bg-[#f0f7f3] text-exim-green flex items-center justify-center mb-4 shrink-0 group-hover:scale-110 transition-transform duration-300">
+                    {item.icon}
+                  </div>
+                  <h3 className="font-extrabold text-base text-exim-navy mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-500 text-xs font-semibold leading-relaxed italic">
+                    &ldquo;{item.quote}&rdquo;
+                  </p>
                 </div>
-                <h3 className="font-extrabold text-base text-exim-navy mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-gray-500 text-xs font-semibold leading-relaxed italic">
-                  &ldquo;{item.quote}&rdquo;
-                </p>
+                <span className="text-exim-green font-bold text-xs mt-4 block">
+                  &mdash; {item.author}
+                </span>
               </div>
-              <span className="text-exim-green font-bold text-xs mt-4 block">
-                &mdash; {item.author}
-              </span>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </section>
@@ -871,7 +953,7 @@ export default function AppDownload() {
       {/* 5. BOTTOM CTA BANNER */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="bg-exim-navy rounded-[28px] p-8 sm:p-12 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-lg">
+          <ScrollReveal className="bg-exim-navy rounded-[28px] p-8 sm:p-12 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-lg">
             {/* Left Block */}
             <div className="flex items-center gap-6">
               {/* Smartphone download icon */}
@@ -904,7 +986,7 @@ export default function AppDownload() {
 
             {/* Right badging */}
             <div className="flex flex-wrap items-center gap-4 shrink-0">
-              <a href="#" className="hover:opacity-90 transition-opacity">
+              <a href="#" className="hover:scale-105 active:scale-98 transition-transform duration-200">
                 <div className="bg-white/5 text-white px-4 py-2 rounded-xl flex items-center gap-2 border border-white/10 hover:border-white/20 shadow-md">
                   <svg
                     className="w-5 h-5 text-white"
@@ -923,7 +1005,7 @@ export default function AppDownload() {
                   </div>
                 </div>
               </a>
-              <a href="#" className="hover:opacity-90 transition-opacity">
+              <a href="#" className="hover:scale-105 active:scale-98 transition-transform duration-200">
                 <div className="bg-white/5 text-white px-4 py-2 rounded-xl flex items-center gap-2 border border-white/10 hover:border-white/20 shadow-md">
                   <svg
                     className="w-5 h-5 text-white"
@@ -943,7 +1025,7 @@ export default function AppDownload() {
                 </div>
               </a>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
     </div>

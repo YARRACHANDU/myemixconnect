@@ -1,7 +1,80 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState, ReactNode } from "react";
 import Image from "next/image";
+
+interface ScrollRevealProps {
+  children: ReactNode;
+  className?: string;
+  delay?: number; // in milliseconds
+  duration?: number; // in milliseconds
+  direction?: "up" | "down" | "left" | "right" | "none";
+}
+
+function ScrollReveal({
+  children,
+  className = "",
+  delay = 0,
+  duration = 800,
+  direction = "up",
+}: ScrollRevealProps) {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.05,
+      }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
+
+  const getDirectionStyle = () => {
+    switch (direction) {
+      case "up":
+        return isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0";
+      case "down":
+        return isVisible ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0";
+      case "left":
+        return isVisible ? "translate-x-0 opacity-100" : "translate-x-12 opacity-0";
+      case "right":
+        return isVisible ? "translate-x-0 opacity-100" : "-translate-x-12 opacity-0";
+      case "none":
+        return isVisible ? "opacity-100" : "opacity-0";
+      default:
+        return "";
+    }
+  };
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-all ease-[cubic-bezier(0.16,1,0.3,1)] ${getDirectionStyle()} ${className}`}
+      style={{
+        transitionDuration: `${duration}ms`,
+        transitionDelay: `${delay}ms`,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
 
 export default function ContactUs() {
   // Form state
@@ -81,7 +154,7 @@ export default function ContactUs() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#f8fafc]/70 text-gray-800 font-sans selection:bg-exim-green selection:text-white pb-16">
+    <div className="min-h-screen bg-[#f8fafc]/70 text-gray-800 font-sans selection:bg-exim-green selection:text-white pb-16 overflow-x-hidden">
       {/* 1. HERO SECTION WITH DIAGONAL SPLIT */}
       <section className="relative overflow-hidden min-h-[380px] lg:min-h-[460px] flex items-center bg-white border-b border-gray-100">
         {/* Background Cargo Ship Image (Desktop) */}
@@ -91,12 +164,12 @@ export default function ContactUs() {
             alt="Cargo Ship at Port"
             fill
             priority
-            className="object-cover object-right"
+            className="object-cover object-right animate-fade-in"
           />
         </div>
 
         {/* Mobile View Top Image Banner */}
-        <div className="w-full lg:hidden relative h-48 sm:h-64 z-0">
+        <div className="w-full lg:hidden relative h-48 sm:h-64 z-0 animate-fade-in">
           <Image
             src="/contactus.png"
             alt="Cargo Ship at Port"
@@ -108,7 +181,7 @@ export default function ContactUs() {
 
         {/* Hero Content Area */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-10 lg:py-16">
-          <div className="w-full lg:w-[58%] flex flex-col justify-center">
+          <div className="w-full lg:w-[58%] flex flex-col justify-center animate-fade-in-up">
             {/* Green Tag */}
             <span className="text-exim-green font-bold text-xs sm:text-sm tracking-wider uppercase mb-2 block">
               CONTACT US
@@ -239,133 +312,141 @@ export default function ContactUs() {
       <section className="py-12 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Card 1: Phone */}
-          <div className="bg-white rounded-2xl border border-gray-100 p-6 flex flex-col items-center text-center shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_30px_-5px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all duration-300">
-            <div className="w-14 h-14 rounded-full bg-[#f3f9f6] text-exim-green flex items-center justify-center mb-4 shadow-sm border border-[#e2ece7]">
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M14 2a8 8 0 018 8"
-                  strokeDasharray="2 2"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 2a10 10 0 0110 10"
-                />
-              </svg>
+          <ScrollReveal delay={0} className="h-full">
+            <div className="bg-white rounded-2xl border border-gray-100 p-6 flex flex-col items-center text-center shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_25px_rgba(19,156,94,0.12)] hover:border-exim-green/20 hover:-translate-y-1.5 transition-all duration-300 group h-full">
+              <div className="w-14 h-14 rounded-full bg-[#f3f9f6] text-exim-green flex items-center justify-center mb-4 shadow-sm border border-[#e2ece7] group-hover:scale-110 transition-transform duration-300">
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M14 2a8 8 0 018 8"
+                    strokeDasharray="2 2"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 2a10 10 0 0110 10"
+                  />
+                </svg>
+              </div>
+              <h3 className="font-extrabold text-base text-exim-navy mb-2">
+                Phone
+              </h3>
+              <p className="text-sm font-bold text-gray-700 hover:text-exim-green transition-colors">
+                <a href="tel:+919003062532">+91 9003062532</a>
+              </p>
+              <p className="text-[11px] font-bold text-gray-400 mt-2">
+                Mon - Sat: 9:00 AM - 6:00 PM
+              </p>
             </div>
-            <h3 className="font-extrabold text-base text-exim-navy mb-2">
-              Phone
-            </h3>
-            <p className="text-sm font-bold text-gray-700 hover:text-exim-green transition-colors">
-              <a href="tel:+919003062532">+91 9003062532</a>
-            </p>
-            <p className="text-[11px] font-bold text-gray-400 mt-2">
-              Mon - Sat: 9:00 AM - 6:00 PM
-            </p>
-          </div>
+          </ScrollReveal>
 
           {/* Card 2: Email */}
-          <div className="bg-white rounded-2xl border border-gray-100 p-6 flex flex-col items-center text-center shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_30px_-5px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all duration-300">
-            <div className="w-14 h-14 rounded-full bg-[#f3f9f6] text-exim-green flex items-center justify-center mb-4 shadow-sm border border-[#e2ece7]">
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
+          <ScrollReveal delay={100} className="h-full">
+            <div className="bg-white rounded-2xl border border-gray-100 p-6 flex flex-col items-center text-center shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_25px_rgba(19,156,94,0.12)] hover:border-exim-green/20 hover:-translate-y-1.5 transition-all duration-300 group h-full">
+              <div className="w-14 h-14 rounded-full bg-[#f3f9f6] text-exim-green flex items-center justify-center mb-4 shadow-sm border border-[#e2ece7] group-hover:scale-110 transition-transform duration-300">
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+              <h3 className="font-extrabold text-base text-exim-navy mb-2">
+                Email
+              </h3>
+              <p className="text-sm font-bold text-gray-700 hover:text-exim-green transition-colors break-all">
+                <a href="mailto:contactus@myeximbusiness.com">
+                  contactus@myeximbusiness.com
+                </a>
+              </p>
+              <p className="text-[11px] font-bold text-gray-400 mt-2">
+                We reply within 24 hours
+              </p>
             </div>
-            <h3 className="font-extrabold text-base text-exim-navy mb-2">
-              Email
-            </h3>
-            <p className="text-sm font-bold text-gray-700 hover:text-exim-green transition-colors break-all">
-              <a href="mailto:contactus@myeximbusiness.com">
-                contactus@myeximbusiness.com
-              </a>
-            </p>
-            <p className="text-[11px] font-bold text-gray-400 mt-2">
-              We reply within 24 hours
-            </p>
-          </div>
+          </ScrollReveal>
 
           {/* Card 3: Head Office */}
-          <div className="bg-white rounded-2xl border border-gray-100 p-6 flex flex-col items-center text-center shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_30px_-5px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all duration-300">
-            <div className="w-14 h-14 rounded-full bg-[#f3f9f6] text-exim-green flex items-center justify-center mb-4 shadow-sm border border-[#e2ece7]">
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
+          <ScrollReveal delay={200} className="h-full">
+            <div className="bg-white rounded-2xl border border-gray-100 p-6 flex flex-col items-center text-center shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_25px_rgba(19,156,94,0.12)] hover:border-exim-green/20 hover:-translate-y-1.5 transition-all duration-300 group h-full">
+              <div className="w-14 h-14 rounded-full bg-[#f3f9f6] text-exim-green flex items-center justify-center mb-4 shadow-sm border border-[#e2ece7] group-hover:scale-110 transition-transform duration-300">
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+              </div>
+              <h3 className="font-extrabold text-base text-exim-navy mb-2">
+                Head Office
+              </h3>
+              <p className="text-sm font-bold text-gray-700">
+                Mumbai, Maharashtra, India
+              </p>
+              <p className="text-[11px] font-bold text-gray-400 mt-2">400001</p>
             </div>
-            <h3 className="font-extrabold text-base text-exim-navy mb-2">
-              Head Office
-            </h3>
-            <p className="text-sm font-bold text-gray-700">
-              Mumbai, Maharashtra, India
-            </p>
-            <p className="text-[11px] font-bold text-gray-400 mt-2">400001</p>
-          </div>
+          </ScrollReveal>
 
           {/* Card 4: Business Hours */}
-          <div className="bg-white rounded-2xl border border-gray-100 p-6 flex flex-col items-center text-center shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_30px_-5px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all duration-300">
-            <div className="w-14 h-14 rounded-full bg-[#f3f9f6] text-exim-green flex items-center justify-center mb-4 shadow-sm border border-[#e2ece7]">
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <circle cx="12" cy="12" r="9" />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 6v6h4.5"
-                />
-              </svg>
+          <ScrollReveal delay={300} className="h-full">
+            <div className="bg-white rounded-2xl border border-gray-100 p-6 flex flex-col items-center text-center shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_10px_25px_rgba(19,156,94,0.12)] hover:border-exim-green/20 hover:-translate-y-1.5 transition-all duration-300 group h-full">
+              <div className="w-14 h-14 rounded-full bg-[#f3f9f6] text-exim-green flex items-center justify-center mb-4 shadow-sm border border-[#e2ece7] group-hover:scale-110 transition-transform duration-300">
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <circle cx="12" cy="12" r="9" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 6v6h4.5"
+                  />
+                </svg>
+              </div>
+              <h3 className="font-extrabold text-base text-exim-navy mb-2">
+                Business Hours
+              </h3>
+              <p className="text-sm font-bold text-gray-700">
+                Mon - Sat: 9:00 AM - 6:00 PM
+              </p>
+              <p className="text-[11px] font-bold text-red-500 mt-2">
+                Sunday: Closed
+              </p>
             </div>
-            <h3 className="font-extrabold text-base text-exim-navy mb-2">
-              Business Hours
-            </h3>
-            <p className="text-sm font-bold text-gray-700">
-              Mon - Sat: 9:00 AM - 6:00 PM
-            </p>
-            <p className="text-[11px] font-bold text-red-500 mt-2">
-              Sunday: Closed
-            </p>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -373,7 +454,7 @@ export default function ContactUs() {
       <section className="py-8 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Left Column: Send Us a Message Form */}
-          <div className="lg:col-span-6 bg-white rounded-[24px] border border-gray-100 p-8 shadow-sm flex flex-col">
+          <ScrollReveal direction="left" className="lg:col-span-6 bg-white rounded-[24px] border border-gray-100 p-8 shadow-sm flex flex-col">
             {/* Top Indicator & Heading */}
             <span className="w-10 h-0.5 bg-exim-green mb-2 block rounded-full"></span>
             <h3 className="text-xl font-extrabold text-exim-navy mb-6">
@@ -381,7 +462,7 @@ export default function ContactUs() {
             </h3>
 
             {formSubmitted ? (
-              <div className="flex-grow flex flex-col items-center justify-center text-center p-8 bg-[#f4faf7] border border-green-100 rounded-2xl">
+              <div className="flex-grow flex flex-col items-center justify-center text-center p-8 bg-[#f4faf7] border border-green-100 rounded-2xl animate-fade-in">
                 <div className="w-14 h-14 bg-green-100 text-exim-green rounded-full flex items-center justify-center mb-4 animate-bounce">
                   <svg
                     className="w-8 h-8"
@@ -536,10 +617,10 @@ export default function ContactUs() {
                 </div>
               </form>
             )}
-          </div>
+          </ScrollReveal>
 
           {/* Right Column: Find Us Here Real Map */}
-          <div className="lg:col-span-6 bg-white rounded-[24px] border border-gray-100 p-8 shadow-sm flex flex-col justify-between">
+          <ScrollReveal direction="right" className="lg:col-span-6 bg-white rounded-[24px] border border-gray-100 p-8 shadow-sm flex flex-col justify-between">
             <div className="flex flex-col h-full justify-between">
               <div>
                 {/* Top Indicator & Heading */}
@@ -551,7 +632,7 @@ export default function ContactUs() {
                 {/* Interactive Map Iframe */}
                 <div className="w-full h-[280px] rounded-xl overflow-hidden border border-gray-100 shadow-inner relative z-10 bg-gray-50">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.803746685412!2d72.86060197597274!3d19.072354552044813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c8ef4c7811ef%3A0xb36ef55fa47291a8!2sTrade%20Centre!5e0!3m2!1sen!2sin!4v1718663489874!5m2!1sen!2sin"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.803746685412!2d72.86060197597274!3d19.072354552044813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c8ef4c7811ef%3A0xb36ef55fa47291a8!2sTrade%20Centre%20Bkc!5e0!3m2!1sen!2sin!4v1718663489874!5m2!1sen!2sin"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
@@ -605,7 +686,7 @@ export default function ContactUs() {
                 </a>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -613,9 +694,11 @@ export default function ContactUs() {
       <section className="py-12 max-w-7xl mx-auto px-6 mt-6">
         {/* Title */}
         <div className="text-center mb-10">
-          <h3 className="text-2xl sm:text-3xl font-extrabold text-exim-navy">
-            Frequently Asked Questions
-          </h3>
+          <ScrollReveal>
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-exim-navy">
+              Frequently Asked Questions
+            </h3>
+          </ScrollReveal>
         </div>
 
         {/* 2 Column Accordion Grid */}
@@ -623,50 +706,51 @@ export default function ContactUs() {
           {faqData.map((faq, index) => {
             const isOpen = openFAQIndex === index;
             return (
-              <div
-                key={index}
-                className="bg-[#f3f7f6]/70 rounded-xl overflow-hidden border border-gray-100 transition-all duration-300"
-              >
-                {/* Accordion Header */}
-                <button
-                  onClick={() => toggleFAQ(index)}
-                  className="w-full flex items-center justify-between text-left p-4 sm:px-6 sm:py-4 cursor-pointer focus:outline-none group"
+              <ScrollReveal key={index} delay={index * 50} className="h-fit">
+                <div
+                  className="bg-[#f3f7f6]/70 rounded-xl overflow-hidden border border-gray-100 transition-all duration-300 h-fit"
                 >
-                  <span className="font-extrabold text-xs sm:text-sm text-exim-navy group-hover:text-exim-green transition-colors pr-4">
-                    {faq.question}
-                  </span>
+                  {/* Accordion Header */}
+                  <button
+                    onClick={() => toggleFAQ(index)}
+                    className="w-full flex items-center justify-between text-left p-4 sm:px-6 sm:py-4 cursor-pointer focus:outline-none group"
+                  >
+                    <span className="font-extrabold text-xs sm:text-sm text-exim-navy group-hover:text-exim-green transition-colors pr-4">
+                      {faq.question}
+                    </span>
+                    <div
+                      className={`shrink-0 w-6 h-6 rounded-full bg-white text-exim-navy flex items-center justify-center transition-transform duration-300 ${
+                        isOpen ? "rotate-180 text-exim-green shadow-sm" : ""
+                      }`}
+                    >
+                      <svg
+                        className="w-3.5 h-3.5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2.5}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </div>
+                  </button>
+
+                  {/* Accordion Body */}
                   <div
-                    className={`shrink-0 w-6 h-6 rounded-full bg-white text-exim-navy flex items-center justify-center transition-transform duration-300 ${
-                      isOpen ? "rotate-180 text-exim-green shadow-sm" : ""
+                    className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                      isOpen ? "max-h-[200px] border-t border-white/50" : "max-h-0"
                     }`}
                   >
-                    <svg
-                      className="w-3.5 h-3.5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2.5}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
+                    <p className="p-4 sm:px-6 sm:pb-5 text-xs sm:text-sm text-gray-600 font-semibold leading-relaxed bg-white">
+                      {faq.answer}
+                    </p>
                   </div>
-                </button>
-
-                {/* Accordion Body */}
-                <div
-                  className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                    isOpen ? "max-h-[200px] border-t border-white/50" : "max-h-0"
-                  }`}
-                >
-                  <p className="p-4 sm:px-6 sm:pb-5 text-xs sm:text-sm text-gray-600 font-semibold leading-relaxed">
-                    {faq.answer}
-                  </p>
                 </div>
-              </div>
+              </ScrollReveal>
             );
           })}
         </div>
@@ -674,7 +758,7 @@ export default function ContactUs() {
 
       {/* 5. STILL HAVE QUESTIONS? SECTION */}
       <section className="max-w-7xl mx-auto px-6 mt-8">
-        <div className="bg-[#f3f7f6] rounded-[24px] border border-gray-100 p-6 sm:px-10 sm:py-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
+        <ScrollReveal className="bg-[#f3f7f6] rounded-[24px] border border-gray-100 p-6 sm:px-10 sm:py-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
           {/* Left: Chat Icon & Text */}
           <div className="flex items-center gap-4 text-center sm:text-left flex-col sm:flex-row">
             <div className="w-14 h-14 rounded-full bg-white text-exim-green flex items-center justify-center shrink-0 shadow-sm border border-gray-100/50">
@@ -706,7 +790,7 @@ export default function ContactUs() {
           <div className="flex flex-col items-center sm:items-end shrink-0">
             <a
               href="mailto:contactus@myeximbusiness.com"
-              className="bg-exim-green hover:bg-[#0e7c4b] text-white font-extrabold text-xs px-6 py-3 rounded-xl flex items-center gap-2 transition-all shadow-md active:scale-98 cursor-pointer"
+              className="bg-exim-green hover:bg-[#0e7c4b] text-white font-extrabold text-xs px-6 py-3 rounded-xl flex items-center gap-2 transition-all shadow-md hover:scale-105 active:scale-98 cursor-pointer"
             >
               <svg
                 className="w-4 h-4"
@@ -727,7 +811,7 @@ export default function ContactUs() {
               We'll get back to you soon!
             </span>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
     </div>
   );
