@@ -108,13 +108,13 @@ export default function FreightForwarders() {
           </div>
 
           {/* Banner image below */}
-          <div className="w-full relative aspect-[16/9] bg-white animate-fade-in">
+          <div className="w-full relative aspect-[16/9] bg-white animate-fade-in overflow-hidden">
             <Image 
               src="/contactus.png"
               alt="Cargo ship and container truck at port"
               fill
               priority
-              className="object-contain"
+              className="object-cover object-right scale-[1.7] origin-right"
             />
           </div>
         </div>

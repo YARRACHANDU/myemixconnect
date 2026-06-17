@@ -193,13 +193,13 @@ export default function AppDownload() {
           </div>
 
           {/* Banner image below */}
-          <div className="w-full relative aspect-[16/10] bg-white animate-fade-in">
+          <div className="w-full relative aspect-[16/10] bg-gradient-to-b from-white to-[#f0f9f4] animate-fade-in overflow-hidden px-4">
             <Image
               src="/mob.png"
               alt="EXIM Connect App Mockups"
               fill
               priority
-              className="object-contain animate-float"
+              className="object-contain scale-[1.05] animate-float"
             />
           </div>
 

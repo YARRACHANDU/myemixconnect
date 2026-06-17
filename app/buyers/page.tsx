@@ -132,13 +132,13 @@ export default function Buyers() {
           </div>
 
           {/* Banner image below */}
-          <div className="w-full relative aspect-[16/9] bg-white animate-fade-in">
+          <div className="w-full relative aspect-[16/9] bg-white animate-fade-in overflow-hidden">
             <Image 
               src="/buyers.png"
               alt="Buyer in a warehouse looking at tablet"
               fill
               priority
-              className="object-contain"
+              className="object-cover object-right scale-[1.7] origin-right"
             />
           </div>
         </div>
