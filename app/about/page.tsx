@@ -31,7 +31,7 @@ function ScrollReveal({
       },
       {
         threshold: 0.05,
-      }
+      },
     );
 
     if (ref.current) {
@@ -48,13 +48,21 @@ function ScrollReveal({
   const getDirectionStyle = () => {
     switch (direction) {
       case "up":
-        return isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0";
+        return isVisible
+          ? "translate-y-0 opacity-100"
+          : "translate-y-10 opacity-0";
       case "down":
-        return isVisible ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0";
+        return isVisible
+          ? "translate-y-0 opacity-100"
+          : "-translate-y-10 opacity-0";
       case "left":
-        return isVisible ? "translate-x-0 opacity-100" : "translate-x-12 opacity-0";
+        return isVisible
+          ? "translate-x-0 opacity-100"
+          : "translate-x-12 opacity-0";
       case "right":
-        return isVisible ? "translate-x-0 opacity-100" : "-translate-x-12 opacity-0";
+        return isVisible
+          ? "translate-x-0 opacity-100"
+          : "-translate-x-12 opacity-0";
       case "none":
         return isVisible ? "opacity-100" : "opacity-0";
       default:
@@ -156,11 +164,13 @@ export default function About() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-xl font-black text-exim-navy">Our Vision</h3>
+                <h3 className="text-xl font-black text-exim-navy">
+                  Our Vision
+                </h3>
                 <p className="text-gray-600 mt-2 text-xs font-semibold leading-relaxed">
-                  To become the most trusted digital platform for the global EXIM
-                  community, enabling seamless connections, transparent trade, and
-                  limitless growth opportunities.
+                  To become the most trusted digital platform for the global
+                  EXIM community, enabling seamless connections, transparent
+                  trade, and limitless growth opportunities.
                 </p>
               </div>
             </div>
@@ -185,7 +195,9 @@ export default function About() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-xl font-black text-exim-navy">Our Mission</h3>
+                <h3 className="text-xl font-black text-exim-navy">
+                  Our Mission
+                </h3>
                 <p className="text-gray-600 mt-2 text-xs font-semibold leading-relaxed">
                   To simplify international trade for Indian businesses through
                   technology, collaboration, and access to the right information
@@ -201,7 +213,10 @@ export default function About() {
       <section className="py-12 bg-white">
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           {/* Hands shaking image */}
-          <ScrollReveal direction="left" className="relative rounded-3xl overflow-hidden shadow-xl border border-gray-100 aspect-[4/3] group">
+          <ScrollReveal
+            direction="left"
+            className="relative rounded-3xl overflow-hidden shadow-xl border border-gray-100 aspect-[4/3] group"
+          >
             <Image
               src="/hands.png"
               alt="Business handshake"
@@ -649,10 +664,10 @@ export default function About() {
         </div>
       </section>
 
-      {/* LET'S GROW TOGETHER WITH SLANTED FULL HEIGHT COMPOSITE */}
+      {/* LET'S GROW TOGETHER - CARD GRID LAYOUT */}
       <section className="py-12 bg-white">
         <div className="max-w-6xl mx-auto px-6">
-          <ScrollReveal className="bg-[#f0f7f3] rounded-[32px] overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-stretch border border-gray-100 shadow-lg min-h-[260px]">
+          <ScrollReveal className="bg-[#f0f7f3] rounded-[32px] overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-center border border-gray-100 shadow-lg">
             {/* Left Content */}
             <div className="col-span-12 lg:col-span-5 flex flex-col justify-center p-8 sm:p-12 z-10">
               <h2 className="text-2xl sm:text-3xl font-extrabold text-exim-navy">
@@ -669,56 +684,62 @@ export default function About() {
               </div>
             </div>
 
-            {/* Right slanting panels composite (Full Height) */}
-            <div className="col-span-12 lg:col-span-7 h-56 lg:h-auto relative overflow-hidden flex">
-              <div className="flex w-[124%] -ml-[12%] h-full">
-                {/* Panel 1: Plane */}
-                <div className="relative h-full flex-1 -skew-x-[15deg] overflow-hidden border-r-2 border-white first:ml-[-20px] group">
-                  <div className="absolute -inset-y-3 -inset-x-12 skew-x-[15deg] group-hover:scale-110 transition-transform duration-500">
-                    <Image
-                      src="/plane.png"
-                      alt="Plane Cargo"
-                      fill
-                      className="object-cover object-[25%_center]"
-                    />
-                  </div>
-                </div>
+            {/* Right: 2x2 Image Card Grid - Compact */}
+            <div className="col-span-12 lg:col-span-7 grid grid-cols-2 gap-2 p-3 sm:p-4">
+              {/* Card 1: Air Freight */}
+              <div className="group relative rounded-xl overflow-hidden shadow-sm border border-white/60 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 aspect-[16/9]">
+                <Image
+                  src="/plane.png"
+                  alt="Air Freight"
+                  fill
+                  className="object-cover object-[25%_center] group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+                <span className="absolute bottom-1.5 left-2 text-white text-[9px] font-bold tracking-wide drop-shadow">
+                  ✈ Air Freight
+                </span>
+              </div>
 
-                {/* Panel 2: Truck */}
-                <div className="relative h-full flex-1 -skew-x-[15deg] overflow-hidden border-r-2 border-white group">
-                  <div className="absolute -inset-y-3 -inset-x-12 skew-x-[15deg] group-hover:scale-110 transition-transform duration-500">
-                    <Image
-                      src="/lorry.png"
-                      alt="Truck Cargo"
-                      fill
-                      className="object-cover object-center"
-                    />
-                  </div>
-                </div>
+              {/* Card 2: Road Freight */}
+              <div className="group relative rounded-xl overflow-hidden shadow-sm border border-white/60 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 aspect-[16/9]">
+                <Image
+                  src="/lorry.png"
+                  alt="Road Freight"
+                  fill
+                  className="object-cover object-center group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+                <span className="absolute bottom-1.5 left-2 text-white text-[9px] font-bold tracking-wide drop-shadow">
+                  🚛 Road Freight
+                </span>
+              </div>
 
-                {/* Panel 3: Ship */}
-                <div className="relative h-full flex-1 -skew-x-[15deg] overflow-hidden border-r-2 border-white group">
-                  <div className="absolute -inset-y-3 -inset-x-12 skew-x-[15deg] group-hover:scale-110 transition-transform duration-500">
-                    <Image
-                      src="/ship.png"
-                      alt="Ship Cargo"
-                      fill
-                      className="object-cover object-center"
-                    />
-                  </div>
-                </div>
+              {/* Card 3: Sea Freight */}
+              <div className="group relative rounded-xl overflow-hidden shadow-sm border border-white/60 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 aspect-[16/9]">
+                <Image
+                  src="/ship.png"
+                  alt="Sea Freight"
+                  fill
+                  className="object-cover object-center group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+                <span className="absolute bottom-1.5 left-2 text-white text-[9px] font-bold tracking-wide drop-shadow">
+                  🚢 Sea Freight
+                </span>
+              </div>
 
-                {/* Panel 4: Yard */}
-                <div className="relative h-full flex-1 -skew-x-[15deg] overflow-hidden group">
-                  <div className="absolute -inset-y-3 -inset-x-12 skew-x-[15deg] group-hover:scale-110 transition-transform duration-500">
-                    <Image
-                      src="/yarrd.png"
-                      alt="Yard Cargo"
-                      fill
-                      className="object-cover object-center"
-                    />
-                  </div>
-                </div>
+              {/* Card 4: Container Yard */}
+              <div className="group relative rounded-xl overflow-hidden shadow-sm border border-white/60 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 aspect-[16/9]">
+                <Image
+                  src="/yarrd.png"
+                  alt="Container Yard"
+                  fill
+                  className="object-cover object-center group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+                <span className="absolute bottom-1.5 left-2 text-white text-[9px] font-bold tracking-wide drop-shadow">
+                  📦 Container Yard
+                </span>
               </div>
             </div>
           </ScrollReveal>

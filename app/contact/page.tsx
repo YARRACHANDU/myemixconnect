@@ -31,7 +31,7 @@ function ScrollReveal({
       },
       {
         threshold: 0.05,
-      }
+      },
     );
 
     if (ref.current) {
@@ -48,13 +48,21 @@ function ScrollReveal({
   const getDirectionStyle = () => {
     switch (direction) {
       case "up":
-        return isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0";
+        return isVisible
+          ? "translate-y-0 opacity-100"
+          : "translate-y-10 opacity-0";
       case "down":
-        return isVisible ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0";
+        return isVisible
+          ? "translate-y-0 opacity-100"
+          : "-translate-y-10 opacity-0";
       case "left":
-        return isVisible ? "translate-x-0 opacity-100" : "translate-x-12 opacity-0";
+        return isVisible
+          ? "translate-x-0 opacity-100"
+          : "translate-x-12 opacity-0";
       case "right":
-        return isVisible ? "translate-x-0 opacity-100" : "-translate-x-12 opacity-0";
+        return isVisible
+          ? "translate-x-0 opacity-100"
+          : "-translate-x-12 opacity-0";
       case "none":
         return isVisible ? "opacity-100" : "opacity-0";
       default:
@@ -89,7 +97,9 @@ export default function ContactUs() {
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -129,27 +139,33 @@ export default function ContactUs() {
   const faqData = [
     {
       question: "How can I create an account on EXIM Connect?",
-      answer: "You can create an account by downloading the EXIM Connect app from the Google Play Store or Apple App Store and signing up as an Exporter, Freight Forwarder, or Buyer. You can also register via our online web platform by clicking the 'Join Now' or 'Get Started' buttons across the site.",
+      answer:
+        "You can create an account by downloading the EXIM Connect app from the Google Play Store or Apple App Store and signing up as an Exporter, Freight Forwarder, or Buyer. You can also register via our online web platform by clicking the 'Join Now' or 'Get Started' buttons across the site.",
     },
     {
       question: "Is EXIM Connect free to use?",
-      answer: "Yes, EXIM Connect offers a free basic plan that allows businesses to create a profile, view basic listings, and receive direct inquiries. For advanced matchmaking, premium badge verification, and unrestricted freight rate comparison, we also offer affordable premium tiers.",
+      answer:
+        "Yes, EXIM Connect offers a free basic plan that allows businesses to create a profile, view basic listings, and receive direct inquiries. For advanced matchmaking, premium badge verification, and unrestricted freight rate comparison, we also offer affordable premium tiers.",
     },
     {
       question: "How do I contact customer support?",
-      answer: "You can reach our dedicated customer support team directly by emailing us at contactus@myeximbusiness.com, calling us at +91 9003062532, or submitting the contact form on this page. We're also available via the app's in-app help desk.",
+      answer:
+        "You can reach our dedicated customer support team directly by emailing us at contactus@myeximbusiness.com, calling us at +91 9003062532, or submitting the contact form on this page. We're also available via the app's in-app help desk.",
     },
     {
       question: "How long does it take to get a response?",
-      answer: "We strive to respond to all inquiries within 24 hours. For premium members, we provide priority customer support with responses typically within 2 to 4 hours.",
+      answer:
+        "We strive to respond to all inquiries within 24 hours. For premium members, we provide priority customer support with responses typically within 2 to 4 hours.",
     },
     {
       question: "Can I update my business information?",
-      answer: "Absolutely. Once registered, you can log in to your account dashboard on the mobile app or website, go to your Profile Settings, and update your business registration, product list, locations, and contact details at any time.",
+      answer:
+        "Absolutely. Once registered, you can log in to your account dashboard on the mobile app or website, go to your Profile Settings, and update your business registration, product list, locations, and contact details at any time.",
     },
     {
       question: "Is my data secure with EXIM Connect?",
-      answer: "Your security is our top priority. We use industry-standard SSL encryption and secure databases to protect all your business records, chat communication, personal details, and transactional data.",
+      answer:
+        "Your security is our top priority. We use industry-standard SSL encryption and secure databases to protect all your business records, chat communication, personal details, and transactional data.",
     },
   ];
 
@@ -278,7 +294,7 @@ export default function ContactUs() {
               </div>
 
               {/* Badge 3: Trusted & Reliable */}
-              <div className="flex items-center gap-3">
+              {/* <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-[#f0f7f3] text-exim-green flex items-center justify-center shrink-0 shadow-sm border border-[#e2ece7]">
                   <svg
                     className="w-5 h-5"
@@ -293,8 +309,8 @@ export default function ContactUs() {
                       d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
                     />
                   </svg>
-                </div>
-                <div className="flex flex-col">
+                </div> */}
+              {/* <div className="flex flex-col">
                   <span className="text-xs font-extrabold text-exim-navy">
                     Trusted & Reliable
                   </span>
@@ -302,7 +318,7 @@ export default function ContactUs() {
                     Your satisfaction is our priority
                   </span>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -454,7 +470,10 @@ export default function ContactUs() {
       <section className="py-8 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Left Column: Send Us a Message Form */}
-          <ScrollReveal direction="left" className="lg:col-span-6 bg-white rounded-[24px] border border-gray-100 p-8 shadow-sm flex flex-col">
+          <ScrollReveal
+            direction="left"
+            className="lg:col-span-6 bg-white rounded-[24px] border border-gray-100 p-8 shadow-sm flex flex-col"
+          >
             {/* Top Indicator & Heading */}
             <span className="w-10 h-0.5 bg-exim-green mb-2 block rounded-full"></span>
             <h3 className="text-xl font-extrabold text-exim-navy mb-6">
@@ -482,12 +501,15 @@ export default function ContactUs() {
                   Message Sent Successfully!
                 </h4>
                 <p className="text-xs sm:text-sm text-gray-500 mt-2 font-semibold max-w-xs">
-                  Thank you for reaching out. A representative from our team will
-                  get back to you shortly.
+                  Thank you for reaching out. A representative from our team
+                  will get back to you shortly.
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleFormSubmit} className="space-y-4 flex-grow flex flex-col justify-between">
+              <form
+                onSubmit={handleFormSubmit}
+                className="space-y-4 flex-grow flex flex-col justify-between"
+              >
                 <div className="space-y-4">
                   {/* Row 1: Full Name & Email */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -552,9 +574,15 @@ export default function ContactUs() {
                           <option value="" disabled>
                             Select a subject
                           </option>
-                          <option value="General Inquiry">General Inquiry</option>
-                          <option value="Technical Support">Technical Support</option>
-                          <option value="Sales / Partnership">Sales / Partnership</option>
+                          <option value="General Inquiry">
+                            General Inquiry
+                          </option>
+                          <option value="Technical Support">
+                            Technical Support
+                          </option>
+                          <option value="Sales / Partnership">
+                            Sales / Partnership
+                          </option>
                           <option value="Feedback">Feedback</option>
                         </select>
                         <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-gray-400">
@@ -620,7 +648,10 @@ export default function ContactUs() {
           </ScrollReveal>
 
           {/* Right Column: Find Us Here Real Map */}
-          <ScrollReveal direction="right" className="lg:col-span-6 bg-white rounded-[24px] border border-gray-100 p-8 shadow-sm flex flex-col justify-between">
+          <ScrollReveal
+            direction="right"
+            className="lg:col-span-6 bg-white rounded-[24px] border border-gray-100 p-8 shadow-sm flex flex-col justify-between"
+          >
             <div className="flex flex-col h-full justify-between">
               <div>
                 {/* Top Indicator & Heading */}
@@ -632,7 +663,7 @@ export default function ContactUs() {
                 {/* Interactive Map Iframe */}
                 <div className="w-full h-[280px] rounded-xl overflow-hidden border border-gray-100 shadow-inner relative z-10 bg-gray-50">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.803746685412!2d72.86060197597274!3d19.072354552044813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c8ef4c7811ef%3A0xb36ef55fa47291a8!2sTrade%20Centre%20Bkc!5e0!3m2!1sen!2sin!4v1718663489874!5m2!1sen!2sin"
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7541.812458828788!2d72.8614262!3d19.06786!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c8edf4c6515d%3A0x77a9c8a0f3bca26a!2sTrade%20Centre%20BKC%20-%20The%20Wadhwa%20Group!5e0!3m2!1sen!2sin!4v1781752678354!5m2!1sen!2sin"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
@@ -707,9 +738,7 @@ export default function ContactUs() {
             const isOpen = openFAQIndex === index;
             return (
               <ScrollReveal key={index} delay={index * 50} className="h-fit">
-                <div
-                  className="bg-[#f3f7f6]/70 rounded-xl overflow-hidden border border-gray-100 transition-all duration-300 h-fit"
-                >
+                <div className="bg-[#f3f7f6]/70 rounded-xl overflow-hidden border border-gray-100 transition-all duration-300 h-fit">
                   {/* Accordion Header */}
                   <button
                     onClick={() => toggleFAQ(index)}
@@ -742,7 +771,9 @@ export default function ContactUs() {
                   {/* Accordion Body */}
                   <div
                     className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                      isOpen ? "max-h-[200px] border-t border-white/50" : "max-h-0"
+                      isOpen
+                        ? "max-h-[200px] border-t border-white/50"
+                        : "max-h-0"
                     }`}
                   >
                     <p className="p-4 sm:px-6 sm:pb-5 text-xs sm:text-sm text-gray-600 font-semibold leading-relaxed bg-white">

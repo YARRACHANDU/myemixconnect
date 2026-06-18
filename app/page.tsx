@@ -82,15 +82,35 @@ export default function Home() {
       
       {/* 1. HERO SECTION WITH BACKGROUND BANNER */}
       <section className="relative bg-[#f2f6fa] overflow-hidden">
+
+        {/* Floating ambient particles (desktop only) */}
+        <div className="hidden lg:block pointer-events-none absolute inset-0 z-0 overflow-hidden">
+          <div className="absolute w-3 h-3 rounded-full bg-exim-green/30 animate-particle1" style={{ top: "20%", left: "38%" }} />
+          <div className="absolute w-2 h-2 rounded-full bg-exim-blue/25 animate-particle2" style={{ top: "60%", left: "42%" }} />
+          <div className="absolute w-4 h-4 rounded-full bg-exim-green/20 animate-particle3" style={{ top: "75%", left: "30%" }} />
+          <div className="absolute w-2.5 h-2.5 rounded-full bg-exim-orange/20 animate-particle1" style={{ top: "35%", left: "25%", animationDelay: "3s" }} />
+          <div className="absolute w-1.5 h-1.5 rounded-full bg-exim-green/40 animate-particle2" style={{ top: "50%", left: "48%", animationDelay: "5s" }} />
+        </div>
+
         {/* Mobile Layout (lg:hidden) */}
         <div className="block lg:hidden">
           {/* Text content first */}
           <div className="px-6 py-8 flex flex-col bg-gradient-to-b from-[#eef4fa] to-white animate-fade-in-up">
             <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-gray-900 leading-none">
               Go Digital. <br />
-              <span className="text-exim-green">Grow Global.</span>
+              <span className="text-exim-green"
+                style={{
+                  background: "linear-gradient(90deg, #139c5e, #0e7c4b, #27c97e, #139c5e)",
+                  backgroundSize: "300% auto",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  animation: "shimmer 3s linear infinite",
+                }}>
+                Grow Global.
+              </span>
             </h1>
-            <h2 className="text-xl sm:text-2xl font-extrabold text-exim-navy mt-3 leading-tight">
+            <h2 className="text-xl sm:text-2xl font-extrabold text-exim-navy mt-3 leading-tight animate-slide-in-left" style={{ animationDelay: "0.2s" }}>
               Your EXIM Business Is in Your Hand
             </h2>
             <p className="text-gray-600 text-sm mt-3 leading-relaxed font-semibold">
@@ -102,13 +122,13 @@ export default function Home() {
 
             {/* Buttons */}
             <div className="flex flex-wrap items-center gap-3 mt-6">
-              <a href="#download" className="flex items-center gap-2 bg-exim-navy hover:bg-exim-navy-dark text-white text-xs font-bold py-2.5 px-4.5 rounded-full shadow-md transition-all hover:scale-105 active:scale-98 duration-200">
+              <a href="#download" className="flex items-center gap-2 bg-exim-navy hover:bg-exim-navy-dark text-white text-xs font-bold py-2.5 px-4.5 rounded-full shadow-md transition-all hover:scale-105 active:scale-98 duration-200 animate-glow-pulse">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                 </svg>
                 <span>Download Now</span>
               </a>
-              <button 
+              <button
                 onClick={() => alert("Watch Video feature is coming soon!")}
                 className="flex items-center gap-2 bg-white hover:bg-gray-50 text-exim-navy border-2 border-exim-navy/20 text-xs font-bold py-2 px-4 rounded-full shadow-sm transition-all hover:scale-105 active:scale-98 duration-200"
               >
@@ -121,7 +141,7 @@ export default function Home() {
 
             {/* App Badges */}
             <div className="flex items-center gap-3 mt-5 pt-3 border-t border-gray-200/50 w-full">
-              <a href="#" className="hover:opacity-90 transition-all hover:scale-103 duration-200">
+              <a href="#" className="hover:opacity-90 transition-all hover:scale-103 duration-200 animate-scale-in" style={{ animationDelay: "0.5s" }}>
                 <div className="bg-black text-white px-3 py-1.5 rounded-lg flex items-center gap-1.5 border border-gray-800 shadow-md">
                   <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M5.23 3c-.115.025-.23.07-.33.14l10.96 10.96 3.12-3.12-13.43-7.73c-.106-.062-.218-.088-.32-.05zm-1.6 1.48c-.062.158-.09.344-.09.55v13.94c0 .206.028.392.09.55l7.98-7.98-7.98-8.01zm9.64 6.53L3.89 21c.102.03.214.004.32-.058l13.43-7.73-3.12-3.12-1.24 1.25z" />
@@ -132,7 +152,7 @@ export default function Home() {
                   </div>
                 </div>
               </a>
-              <a href="#" className="hover:opacity-90 transition-all hover:scale-103 duration-200">
+              <a href="#" className="hover:opacity-90 transition-all hover:scale-103 duration-200 animate-scale-in" style={{ animationDelay: "0.7s" }}>
                 <div className="bg-black text-white px-3 py-1.5 rounded-lg flex items-center gap-1.5 border border-gray-800 shadow-md">
                   <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-.96.04-2.13.64-2.82 1.45-.6.7-1.13 1.84-.99 2.94.97.08 2.16-.52 2.82-1.33z" />
@@ -147,7 +167,7 @@ export default function Home() {
           </div>
           {/* Banner image below */}
           <div className="w-full relative aspect-[16/10] animate-fade-in">
-            <Image 
+            <Image
               src="/banner.png"
               alt="EXIM Connect Banner"
               fill
@@ -156,6 +176,7 @@ export default function Home() {
             />
           </div>
         </div>
+
 
         {/* Desktop Layout (lg:block hidden) */}
         <div 
@@ -173,27 +194,36 @@ export default function Home() {
               <div className="col-span-5 xl:col-span-4 flex flex-col justify-center animate-fade-in-up">
                 <h1 className="text-4xl lg:text-[46px] xl:text-[52px] font-black tracking-tight text-gray-900 leading-none">
                   Go Digital. <br />
-                  <span className="text-exim-green">Grow Global.</span>
+                  <span style={{
+                    background: "linear-gradient(90deg, #139c5e, #0e7c4b, #27c97e, #139c5e)",
+                    backgroundSize: "300% auto",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                    animation: "shimmer 3s linear infinite",
+                  }}>
+                    Grow Global.
+                  </span>
                 </h1>
-                <h2 className="text-xl lg:text-[24px] xl:text-[26px] font-extrabold text-exim-navy mt-4 leading-tight">
+                <h2 className="text-xl lg:text-[24px] xl:text-[26px] font-extrabold text-exim-navy mt-4 leading-tight animate-slide-in-left" style={{ animationDelay: "0.3s" }}>
                   Your EXIM Business Is in Your Hand
                 </h2>
                 <p className="text-gray-600 text-xs lg:text-sm mt-4 leading-relaxed font-semibold">
                   A smart digital platform for Indian Exporters, Buyers and Freight Forwarders to connect, quote, collaborate and grow business faster.
                 </p>
-                <p className="text-exim-green font-bold text-xs lg:text-sm mt-3">
+                <p className="text-exim-green font-bold text-xs lg:text-sm mt-3 animate-fade-in" style={{ animationDelay: "0.6s" }}>
                   Together, we can make wonders in global trade.
                 </p>
-                
+
                 {/* CTA Buttons */}
                 <div className="flex items-center gap-3 mt-6">
-                  <a href="#download" className="flex items-center gap-2 bg-exim-navy hover:bg-exim-navy-dark text-white text-[11px] lg:text-xs font-bold py-3 px-5 rounded-full shadow-md transition-all hover:scale-105 active:scale-98 duration-200">
+                  <a href="#download" className="flex items-center gap-2 bg-exim-navy hover:bg-exim-navy-dark text-white text-[11px] lg:text-xs font-bold py-3 px-5 rounded-full shadow-md transition-all hover:scale-105 active:scale-98 duration-200 animate-glow-pulse">
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                     </svg>
                     <span>Download Now</span>
                   </a>
-                  <button 
+                  <button
                     onClick={() => alert("Watch Video feature is coming soon!")}
                     className="flex items-center gap-2 bg-white hover:bg-gray-50 text-exim-navy border-2 border-exim-navy/20 text-[11px] lg:text-xs font-bold py-2.5 px-5 rounded-full shadow-sm transition-all hover:scale-105 active:scale-98 duration-200"
                   >
@@ -206,7 +236,7 @@ export default function Home() {
 
                 {/* Badges */}
                 <div className="flex items-center gap-3 mt-6 pt-4 border-t border-gray-200/50 w-full max-w-sm">
-                  <a href="#" className="hover:opacity-90 transition-all hover:scale-105 duration-200">
+                  <a href="#" className="hover:opacity-90 transition-all hover:scale-105 duration-200 animate-scale-in" style={{ animationDelay: "0.8s" }}>
                     <div className="bg-black text-white px-3 py-1.5 rounded-lg flex items-center gap-1.5 border border-gray-800 shadow-md">
                       <svg className="w-4.5 h-4.5 text-white" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M5.23 3c-.115.025-.23.07-.33.14l10.96 10.96 3.12-3.12-13.43-7.73c-.106-.062-.218-.088-.32-.05zm-1.6 1.48c-.062.158-.09.344-.09.55v13.94c0 .206.028.392.09.55l7.98-7.98-7.98-8.01zm9.64 6.53L3.89 21c.102.03.214.004.32-.058l13.43-7.73-3.12-3.12-1.24 1.25z" />
@@ -217,7 +247,7 @@ export default function Home() {
                       </div>
                     </div>
                   </a>
-                  <a href="#" className="hover:opacity-90 transition-all hover:scale-105 duration-200">
+                  <a href="#" className="hover:opacity-90 transition-all hover:scale-105 duration-200 animate-scale-in" style={{ animationDelay: "1s" }}>
                     <div className="bg-black text-white px-3 py-1.5 rounded-lg flex items-center gap-1.5 border border-gray-800 shadow-md">
                       <svg className="w-4.5 h-4.5 text-white" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-.96.04-2.13.64-2.82 1.45-.6.7-1.13 1.84-.99 2.94.97.08 2.16-.52 2.82-1.33z" />

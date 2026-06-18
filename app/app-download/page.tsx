@@ -732,7 +732,7 @@ export default function AppDownload() {
               }}
             >
               {/* Content overlay */}
-              <div className="absolute inset-0 flex items-center px-12">
+              <div className="absolute inset-0 flex items-center pl-10 pr-0">
                 <div className="max-w-7xl w-full grid grid-cols-12 items-center">
                   <div className="col-span-7 flex flex-col justify-center z-10">
                     <h2 className="text-[32px] font-extrabold text-exim-navy leading-tight">
@@ -745,7 +745,7 @@ export default function AppDownload() {
                     {/* QR Codes Grid */}
                     <div className="grid grid-cols-2 gap-6 mt-8">
                       {/* iOS Store */}
-                      <div className="bg-white border border-gray-100 rounded-2xl p-5 flex items-center gap-4 shadow-sm hover:scale-102 transition-transform duration-200">
+                      <div className="rounded-2xl p-3 flex items-center gap-4 transition-transform duration-200">
                         <QRCodeSVG />
                         <div className="flex flex-col gap-2">
                           <div className="bg-black text-white px-3 py-1.5 rounded-lg flex items-center gap-1.5 border border-gray-800 shadow-sm w-36">
@@ -772,7 +772,7 @@ export default function AppDownload() {
                       </div>
 
                       {/* Google Play */}
-                      <div className="bg-white border border-gray-100 rounded-2xl p-5 flex items-center gap-4 shadow-sm hover:scale-102 transition-transform duration-200">
+                      <div className="rounded-2xl p-3 flex items-center gap-4 transition-transform duration-200">
                         <QRCodeSVG />
                         <div className="flex flex-col gap-2">
                           <div className="bg-black text-white px-3 py-1.5 rounded-lg flex items-center gap-1.5 border border-gray-800 shadow-sm w-36">
@@ -800,7 +800,7 @@ export default function AppDownload() {
                     </div>
 
                     {/* Bottom check banner */}
-                    <div className="mt-8 bg-white border border-[#e8f5ed] rounded-xl px-5 py-3.5 flex items-center gap-3 inline-flex">
+                    <div className="mt-6 flex items-center gap-3">
                       <div className="w-5.5 h-5.5 rounded-full bg-[#e8f5ed] text-exim-green flex items-center justify-center shrink-0">
                         <svg
                           className="w-3.5 h-3.5"
