@@ -102,7 +102,7 @@ export default function FreightForwarders() {
             </h1>
             
             <p className="text-gray-600 text-sm mt-4 leading-relaxed font-semibold">
-              EXIM Connect empowers freight forwarders to connect with exporters
+              MY EXIM Connect empowers freight forwarders to connect with exporters
               and buyers, share rates, and grow their business globally.
             </p>
           </div>
@@ -151,7 +151,7 @@ export default function FreightForwarders() {
 
                 {/* Description */}
                 <p className="text-gray-600 text-sm sm:text-base mt-5 leading-relaxed font-semibold">
-                  EXIM Connect empowers freight forwarders to connect with exporters
+                  MY EXIM Connect empowers freight forwarders to connect with exporters
                   and buyers, share rates, and grow their business globally.
                 </p>
               </div>
@@ -172,7 +172,7 @@ export default function FreightForwarders() {
               a Freight Forwarder
             </h2>
             <p className="text-gray-500 mt-4 font-semibold text-sm sm:text-base">
-              Manage your network, share rates, and win more business with EXIM
+              Manage your network, share rates, and win more business with MY EXIM
               Connect.
             </p>
           </ScrollReveal>
@@ -599,7 +599,7 @@ export default function FreightForwarders() {
 
               <div>
                 <h3 className="text-base sm:text-lg font-extrabold text-[#002244] leading-tight">
-                  Join EXIM Connect today and take your forwarding business to
+                  Join MY EXIM Connect today and take your forwarding business to
                   the next level.
                 </h3>
                 <p className="text-gray-500 text-xs sm:text-sm font-semibold mt-1.5">

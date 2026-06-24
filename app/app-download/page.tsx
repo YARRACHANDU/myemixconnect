@@ -133,7 +133,7 @@ export default function AppDownload() {
           <div className="px-6 py-8 flex flex-col bg-gradient-to-b from-[#f8fafc] to-white animate-fade-in-up">
             {/* Tag */}
             <span className="text-exim-green font-bold text-xs tracking-wider uppercase mb-3 block">
-              DOWNLOAD THE EXIM CONNECT APP
+              DOWNLOAD THE MY EXIM CONNECT APP
             </span>
 
             {/* Heading */}
@@ -173,11 +173,13 @@ export default function AppDownload() {
               <a href="#" className="hover:scale-105 active:scale-98 transition-transform duration-200">
                 <div className="bg-black text-white px-3 py-1.5 rounded-lg flex items-center gap-1.5 border border-gray-800 shadow-md">
                   <svg
-                    className="w-4 h-4 text-white"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
+                    className="w-4 h-4"
+                    viewBox="0 0 96.3 96.3"
                   >
-                    <path d="M5.23 3c-.115.025-.23.07-.33.14l10.96 10.96 3.12-3.12-13.43-7.73c-.106-.062-.218-.088-.32-.05zm-1.6 1.48c-.062.158-.09.344-.09.55v13.94c0 .206.028.392.09.55l7.98-7.98-7.98-8.01zm9.64 6.53L3.89 21c.102.03.214.004.32-.058l13.43-7.73-3.12-3.12-1.24 1.25z" />
+                    <path fill="#EA4335" d="M46.884 45.762 10.337 84.18a.745.745 0 0 0 .006.023c1.121 4.171 4.967 7.243 9.534 7.243a9.918 9.918 0 0 0 5.008-1.346l.116-.069 41.138-23.509-19.255-20.76z"/>
+                    <path fill="#FBBC04" d="m83.858 39.22-.035-.023-17.76-10.198-20.009 17.635 20.079 19.883L83.8 56.422c3.097-1.657 5.2-4.89 5.2-8.618 0-3.705-2.074-6.921-5.142-8.584z"/>
+                    <path fill="#4285F4" d="M10.335 11.264A9.54 9.54 0 0 0 10 13.78v67.886c.036.974.115 1.715.337 2.514l37.804-37.434-37.806-35.482z"/>
+                    <path fill="#34A853" d="m47.154 47.723 18.915-18.73L24.978 5.398A9.962 9.962 0 0 0 19.877 4c-4.567 0-8.419 3.078-9.54 7.255l-.002.01 36.819 36.458z"/>
                   </svg>
                   <div className="flex flex-col text-left">
                     <span className="text-[7px] uppercase tracking-wider text-gray-400 font-medium leading-none">
@@ -196,7 +198,7 @@ export default function AppDownload() {
           <div className="w-full relative aspect-[16/10] bg-gradient-to-b from-white to-[#f0f9f4] animate-fade-in overflow-hidden px-4">
             <Image
               src="/mob.png"
-              alt="EXIM Connect App Mockups"
+              alt="MY EXIM Connect App Mockups"
               fill
               priority
               className="object-contain scale-[1.05] animate-float"
@@ -310,7 +312,7 @@ export default function AppDownload() {
               <div className="col-span-7 flex flex-col justify-center animate-fade-in-up">
                 {/* Tag */}
                 <span className="text-exim-green font-bold text-xs tracking-wider uppercase mb-3 block">
-                  DOWNLOAD THE EXIM CONNECT APP
+                  DOWNLOAD THE MY EXIM CONNECT APP
                 </span>
 
                 {/* Title */}
@@ -350,11 +352,13 @@ export default function AppDownload() {
                   <a href="#" className="hover:scale-105 active:scale-98 transition-transform duration-200">
                     <div className="bg-black text-white px-4 py-2 rounded-xl flex items-center gap-2 border border-gray-800 shadow-md">
                       <svg
-                        className="w-5 h-5 text-white"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
+                        className="w-5 h-5"
+                        viewBox="0 0 96.3 96.3"
                       >
-                        <path d="M5.23 3c-.115.025-.23.07-.33.14l10.96 10.96 3.12-3.12-13.43-7.73c-.106-.062-.218-.088-.32-.05zm-1.6 1.48c-.062.158-.09.344-.09.55v13.94c0 .206.028.392.09.55l7.98-7.98-7.98-8.01zm9.64 6.53L3.89 21c.102.03.214.004.32-.058l13.43-7.73-3.12-3.12-1.24 1.25z" />
+                        <path fill="#EA4335" d="M46.884 45.762 10.337 84.18a.745.745 0 0 0 .006.023c1.121 4.171 4.967 7.243 9.534 7.243a9.918 9.918 0 0 0 5.008-1.346l.116-.069 41.138-23.509-19.255-20.76z"/>
+                        <path fill="#FBBC04" d="m83.858 39.22-.035-.023-17.76-10.198-20.009 17.635 20.079 19.883L83.8 56.422c3.097-1.657 5.2-4.89 5.2-8.618 0-3.705-2.074-6.921-5.142-8.584z"/>
+                        <path fill="#4285F4" d="M10.335 11.264A9.54 9.54 0 0 0 10 13.78v67.886c.036.974.115 1.715.337 2.514l37.804-37.434-37.806-35.482z"/>
+                        <path fill="#34A853" d="m47.154 47.723 18.915-18.73L24.978 5.398A9.962 9.962 0 0 0 19.877 4c-4.567 0-8.419 3.078-9.54 7.255l-.002.01 36.819 36.458z"/>
                       </svg>
                       <div className="flex flex-col text-left">
                         <span className="text-[8px] uppercase tracking-wider text-gray-400 font-medium leading-none">
@@ -624,7 +628,7 @@ export default function AppDownload() {
           {/* Mobile Layout (lg:hidden) */}
           <div className="block lg:hidden bg-[#f4faf7] rounded-[32px] p-6 sm:p-8">
             <h2 className="text-2xl font-extrabold text-exim-navy leading-tight">
-              Download the EXIM Connect App
+              Download the MY EXIM Connect App
             </h2>
             <p className="text-gray-500 text-xs sm:text-sm mt-2 font-semibold">
               Scan the QR code or download from your favorite store.
@@ -665,11 +669,13 @@ export default function AppDownload() {
                 <div className="flex flex-col gap-2">
                   <div className="bg-black text-white px-3 py-1.5 rounded-lg flex items-center gap-1.5 border border-gray-800 shadow-sm w-36">
                     <svg
-                      className="w-4 h-4 text-white shrink-0"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
+                      className="w-4 h-4 shrink-0"
+                      viewBox="0 0 96.3 96.3"
                     >
-                      <path d="M5.23 3c-.115.025-.23.07-.33.14l10.96 10.96 3.12-3.12-13.43-7.73c-.106-.062-.218-.088-.32-.05zm-1.6 1.48c-.062.158-.09.344-.09.55v13.94c0 .206.028.392.09.55l7.98-7.98-7.98-8.01zm9.64 6.53L3.89 21c.102.03.214.004.32-.058l13.43-7.73-3.12-3.12-1.24 1.25z" />
+                      <path fill="#EA4335" d="M46.884 45.762 10.337 84.18a.745.745 0 0 0 .006.023c1.121 4.171 4.967 7.243 9.534 7.243a9.918 9.918 0 0 0 5.008-1.346l.116-.069 41.138-23.509-19.255-20.76z"/>
+                      <path fill="#FBBC04" d="m83.858 39.22-.035-.023-17.76-10.198-20.009 17.635 20.079 19.883L83.8 56.422c3.097-1.657 5.2-4.89 5.2-8.618 0-3.705-2.074-6.921-5.142-8.584z"/>
+                      <path fill="#4285F4" d="M10.335 11.264A9.54 9.54 0 0 0 10 13.78v67.886c.036.974.115 1.715.337 2.514l37.804-37.434-37.806-35.482z"/>
+                      <path fill="#34A853" d="m47.154 47.723 18.915-18.73L24.978 5.398A9.962 9.962 0 0 0 19.877 4c-4.567 0-8.419 3.078-9.54 7.255l-.002.01 36.819 36.458z"/>
                     </svg>
                     <div className="flex flex-col text-left">
                       <span className="text-[6px] uppercase tracking-wider text-gray-400 font-medium leading-none">
@@ -736,7 +742,7 @@ export default function AppDownload() {
                 <div className="max-w-7xl w-full grid grid-cols-12 items-center">
                   <div className="col-span-7 flex flex-col justify-center z-10">
                     <h2 className="text-[32px] font-extrabold text-exim-navy leading-tight">
-                      Download the EXIM Connect App
+                      Download the MY EXIM Connect App
                     </h2>
                     <p className="text-gray-500 text-sm mt-2 font-semibold">
                       Scan the QR code or download from your favorite store.
@@ -777,11 +783,13 @@ export default function AppDownload() {
                         <div className="flex flex-col gap-2">
                           <div className="bg-black text-white px-3 py-1.5 rounded-lg flex items-center gap-1.5 border border-gray-800 shadow-sm w-36">
                             <svg
-                              className="w-4.5 h-4.5 text-white shrink-0"
-                              fill="currentColor"
-                              viewBox="0 0 24 24"
+                              className="w-4.5 h-4.5 shrink-0"
+                              viewBox="0 0 96.3 96.3"
                             >
-                              <path d="M5.23 3c-.115.025-.23.07-.33.14l10.96 10.96 3.12-3.12-13.43-7.73c-.106-.062-.218-.088-.32-.05zm-1.6 1.48c-.062.158-.09.344-.09.55v13.94c0 .206.028.392.09.55l7.98-7.98-7.98-8.01zm9.64 6.53L3.89 21c.102.03.214.004.32-.058l13.43-7.73-3.12-3.12-1.24 1.25z" />
+                              <path fill="#EA4335" d="M46.884 45.762 10.337 84.18a.745.745 0 0 0 .006.023c1.121 4.171 4.967 7.243 9.534 7.243a9.918 9.918 0 0 0 5.008-1.346l.116-.069 41.138-23.509-19.255-20.76z"/>
+                              <path fill="#FBBC04" d="m83.858 39.22-.035-.023-17.76-10.198-20.009 17.635 20.079 19.883L83.8 56.422c3.097-1.657 5.2-4.89 5.2-8.618 0-3.705-2.074-6.921-5.142-8.584z"/>
+                              <path fill="#4285F4" d="M10.335 11.264A9.54 9.54 0 0 0 10 13.78v67.886c.036.974.115 1.715.337 2.514l37.804-37.434-37.806-35.482z"/>
+                              <path fill="#34A853" d="m47.154 47.723 18.915-18.73L24.978 5.398A9.962 9.962 0 0 0 19.877 4c-4.567 0-8.419 3.078-9.54 7.255l-.002.01 36.819 36.458z"/>
                             </svg>
                             <div className="flex flex-col text-left">
                               <span className="text-[6px] uppercase tracking-wider text-gray-400 font-medium leading-none">
@@ -835,7 +843,7 @@ export default function AppDownload() {
             <h2 className="text-2xl sm:text-3xl font-extrabold text-exim-navy inline-block relative pb-2">
               Why Users Love{" "}
               <span className="text-[#002244] border-b-2 border-exim-green">
-                EXIM Connect
+                MY EXIM Connect
               </span>
             </h2>
           </ScrollReveal>
@@ -978,7 +986,7 @@ export default function AppDownload() {
                   Take Your Business Global
                 </h2>
                 <p className="text-gray-300 text-xs sm:text-sm font-semibold max-w-md">
-                  Download the EXIM Connect app today and experience seamless
+                  Download the MY EXIM Connect app today and experience seamless
                   global trade.
                 </p>
               </div>
@@ -1008,11 +1016,13 @@ export default function AppDownload() {
               <a href="#" className="hover:scale-105 active:scale-98 transition-transform duration-200">
                 <div className="bg-white/5 text-white px-4 py-2 rounded-xl flex items-center gap-2 border border-white/10 hover:border-white/20 shadow-md">
                   <svg
-                    className="w-5 h-5 text-white"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
+                    className="w-5 h-5"
+                    viewBox="0 0 96.3 96.3"
                   >
-                    <path d="M5.23 3c-.115.025-.23.07-.33.14l10.96 10.96 3.12-3.12-13.43-7.73c-.106-.062-.218-.088-.32-.05zm-1.6 1.48c-.062.158-.09.344-.09.55v13.94c0 .206.028.392.09.55l7.98-7.98-7.98-8.01zm9.64 6.53L3.89 21c.102.03.214.004.32-.058l13.43-7.73-3.12-3.12-1.24 1.25z" />
+                    <path fill="#EA4335" d="M46.884 45.762 10.337 84.18a.745.745 0 0 0 .006.023c1.121 4.171 4.967 7.243 9.534 7.243a9.918 9.918 0 0 0 5.008-1.346l.116-.069 41.138-23.509-19.255-20.76z"/>
+                    <path fill="#FBBC04" d="m83.858 39.22-.035-.023-17.76-10.198-20.009 17.635 20.079 19.883L83.8 56.422c3.097-1.657 5.2-4.89 5.2-8.618 0-3.705-2.074-6.921-5.142-8.584z"/>
+                    <path fill="#4285F4" d="M10.335 11.264A9.54 9.54 0 0 0 10 13.78v67.886c.036.974.115 1.715.337 2.514l37.804-37.434-37.806-35.482z"/>
+                    <path fill="#34A853" d="m47.154 47.723 18.915-18.73L24.978 5.398A9.962 9.962 0 0 0 19.877 4c-4.567 0-8.419 3.078-9.54 7.255l-.002.01 36.819 36.458z"/>
                   </svg>
                   <div className="flex flex-col text-left">
                     <span className="text-[8px] uppercase tracking-wider text-gray-400 font-medium leading-none">

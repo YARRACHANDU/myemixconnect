@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, ReactNode } from "react";
 import Image from "next/image";
+import { countryCodes } from "../../components/countryCodes";
 
 interface ScrollRevealProps {
   children: ReactNode;
@@ -85,6 +86,20 @@ function ScrollReveal({
 }
 
 export default function ContactUs() {
+  const [countryCode, setCountryCode] = useState("+91");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
+  const currentCountry = countryCodes.find(c => c.dial === countryCode) || countryCodes[0];
+  const filteredCountries = countryCodes.filter(
+    (c) =>
+      c.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      c.dial.includes(searchQuery) ||
+      c.code.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   // Form state
   const [formData, setFormData] = useState({
     fullName: "",
@@ -108,21 +123,45 @@ export default function ContactUs() {
     }));
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate API call
-    console.log("Form data submitted:", formData);
-    setFormSubmitted(true);
-    setTimeout(() => {
-      setFormSubmitted(false);
-      setFormData({
-        fullName: "",
-        email: "",
-        phoneNumber: "",
-        subject: "",
-        message: "",
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          phoneNumber: `${countryCode} ${formData.phoneNumber}`,
+        }),
       });
-    }, 4000);
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setFormSubmitted(true);
+        setFormData({
+          fullName: "",
+          email: "",
+          phoneNumber: "",
+          subject: "",
+          message: "",
+        });
+        setTimeout(() => {
+          setFormSubmitted(false);
+        }, 4000);
+      } else {
+        setSubmitError(data.error || "Failed to submit enquiry.");
+      }
+    } catch (err) {
+      setSubmitError("Failed to submit enquiry. Please check your connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // FAQ Accordion state (stores the index of the open question)
@@ -138,14 +177,14 @@ export default function ContactUs() {
 
   const faqData = [
     {
-      question: "How can I create an account on EXIM Connect?",
+      question: "How can I create an account on MY EXIM Connect?",
       answer:
-        "You can create an account by downloading the EXIM Connect app from the Google Play Store or Apple App Store and signing up as an Exporter, Freight Forwarder, or Buyer. You can also register via our online web platform by clicking the 'Join Now' or 'Get Started' buttons across the site.",
+        "You can create an account by downloading the MY EXIM Connect app from the Google Play Store or Apple App Store and signing up as an Exporter, Freight Forwarder, or Buyer. You can also register via our online web platform by clicking the 'Join Now' or 'Get Started' buttons across the site.",
     },
     {
-      question: "Is EXIM Connect free to use?",
+      question: "Is MY EXIM Connect free to use?",
       answer:
-        "Yes, EXIM Connect offers a free basic plan that allows businesses to create a profile, view basic listings, and receive direct inquiries. For advanced matchmaking, premium badge verification, and unrestricted freight rate comparison, we also offer affordable premium tiers.",
+        "Yes, absolutely. MY EXIM Connect is completely free to use for all exporters, freight forwarders, and buyers. There are no registration fees, no subscription plans, and no hidden charges.",
     },
     {
       question: "How do I contact customer support?",
@@ -155,7 +194,7 @@ export default function ContactUs() {
     {
       question: "How long does it take to get a response?",
       answer:
-        "We strive to respond to all inquiries within 24 hours. For premium members, we provide priority customer support with responses typically within 2 to 4 hours.",
+        "We strive to respond to all inquiries within 24 hours. Our support team is active Monday through Saturday to assist you as quickly as possible.",
     },
     {
       question: "Can I update my business information?",
@@ -163,7 +202,7 @@ export default function ContactUs() {
         "Absolutely. Once registered, you can log in to your account dashboard on the mobile app or website, go to your Profile Settings, and update your business registration, product list, locations, and contact details at any time.",
     },
     {
-      question: "Is my data secure with EXIM Connect?",
+      question: "Is my data secure with MY EXIM Connect?",
       answer:
         "Your security is our top priority. We use industry-standard SSL encryption and secure databases to protect all your business records, chat communication, personal details, and transactional data.",
     },
@@ -357,11 +396,23 @@ export default function ContactUs() {
                 </svg>
               </div>
               <h3 className="font-extrabold text-base text-exim-navy mb-2">
-                Phone
+                Phone & WhatsApp
               </h3>
               <p className="text-sm font-bold text-gray-700 hover:text-exim-green transition-colors">
                 <a href="tel:+919003062532">+91 9003062532</a>
               </p>
+              <a 
+                href="https://wa.me/919003062532?text=Hi%20MY%20EXIM%20Connect,%20I%20have%20an%20inquiry." 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="mt-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366] hover:text-white font-extrabold text-xs transition-all shadow-sm duration-300"
+              >
+                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.858.002-2.634-1.023-5.11-2.884-6.974C16.592 1.909 14.116.884 11.487.884c-5.443 0-9.867 4.42-9.871 9.858 0 1.93.505 3.811 1.464 5.483L1.993 22l6.096-1.599c1.6.87 3.298 1.328 4.558 1.328z"/>
+                  <path d="M17.472 14.382c-.3-.149-1.778-.878-2.046-.976-.269-.099-.463-.149-.658.149-.195.297-.752.975-.921 1.17-.17.195-.338.219-.638.07-.3-.15-1.267-.467-2.414-1.492-.893-.797-1.495-1.782-1.67-2.08-.175-.298-.018-.459.13-.607.135-.133.3-.347.45-.52.149-.174.199-.297.299-.497.099-.2.05-.376-.025-.525-.075-.149-.658-1.587-.901-2.172-.236-.57-.477-.492-.658-.5-.17-.008-.365-.01-.56-.01s-.51.074-.776.365c-.266.291-1.017.992-1.017 2.42 0 1.427 1.039 2.805 1.183 3.002.144.195 2.043 3.12 4.95 4.38.69.298 1.23.478 1.65.612.693.22 1.325.19 1.823.114.557-.083 1.778-.727 2.028-1.427.25-.7.25-1.3.175-1.427-.075-.127-.269-.201-.569-.35z"/>
+                </svg>
+                Chat on WhatsApp
+              </a>
               <p className="text-[11px] font-bold text-gray-400 mt-2">
                 Mon - Sat: 9:00 AM - 6:00 PM
               </p>
@@ -427,9 +478,11 @@ export default function ContactUs() {
                 Head Office
               </h3>
               <p className="text-sm font-bold text-gray-700">
-                Mumbai, Maharashtra, India
+                MY EXIM CONNECT TECHNOLOGOES PRIVATE LIMITED, Ground Floor, Plot
+                No: 221, Door No: 8/8, Elango Street, Alwarthirunagar, Chennai,
+                Tamilnadu, India
               </p>
-              <p className="text-[11px] font-bold text-gray-400 mt-2">400001</p>
+              <p className="text-[11px] font-bold text-gray-400 mt-2">600087</p>
             </div>
           </ScrollReveal>
 
@@ -547,17 +600,99 @@ export default function ContactUs() {
                   {/* Row 2: Phone Number & Subject */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="flex flex-col">
-                      <label className="text-xs font-bold text-gray-700 mb-1.5">
-                        Phone Number
+                      <label className="text-xs font-bold text-gray-700 mb-1.5 flex items-center">
+                        Phone Number <span className="text-red-500 ml-1">*</span>
                       </label>
-                      <input
-                        type="tel"
-                        name="phoneNumber"
-                        value={formData.phoneNumber}
-                        onChange={handleInputChange}
-                        placeholder="Enter your phone number"
-                        className="w-full text-xs font-semibold px-4 py-3 border border-gray-200 rounded-xl focus:border-exim-green focus:outline-none bg-gray-50/20 text-gray-800 placeholder-gray-400 transition-colors"
-                      />
+                      <div className="flex rounded-xl border border-gray-200 focus-within:border-exim-green transition-colors bg-gray-50/20 relative">
+                        {/* Country Code Dropdown */}
+                        <div className="relative">
+                          <button
+                            type="button"
+                            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                            className="h-full text-[11px] sm:text-xs font-bold px-2 sm:px-3 py-3 border-r border-gray-200 bg-gray-50 text-gray-700 focus:outline-none cursor-pointer flex items-center gap-1.5 min-w-[85px] sm:min-w-[95px] justify-between rounded-l-xl"
+                          >
+                            <span className="flex items-center gap-1">
+                              <span>{currentCountry.flag}</span>
+                              <span>{countryCode}</span>
+                            </span>
+                            <svg className="w-3 h-3 text-gray-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                          </button>
+
+                          {isDropdownOpen && (
+                            <>
+                              {/* Overlay to close dropdown */}
+                              <div
+                                className="fixed inset-0 z-40 cursor-default"
+                                onClick={() => {
+                                  setIsDropdownOpen(false);
+                                  setSearchQuery("");
+                                }}
+                              />
+                              <div className="absolute left-0 mt-1.5 w-72 max-h-80 bg-white border border-gray-200 rounded-xl shadow-lg z-50 overflow-hidden flex flex-col">
+                                {/* Search input */}
+                                <div className="p-2 border-b border-gray-100 bg-gray-50">
+                                  <input
+                                    type="text"
+                                    placeholder="Search country or dial code..."
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                    className="w-full text-xs font-semibold px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-exim-green text-gray-800 bg-white"
+                                  />
+                                </div>
+                                {/* Options list */}
+                                <div className="overflow-y-auto flex-1 py-1 max-h-56">
+                                  {filteredCountries.length > 0 ? (
+                                    filteredCountries.map((c) => (
+                                      <button
+                                        key={c.code + c.dial}
+                                        type="button"
+                                        onClick={() => {
+                                          setCountryCode(c.dial);
+                                          setIsDropdownOpen(false);
+                                          setSearchQuery("");
+                                        }}
+                                        className={`w-full flex items-center gap-2.5 px-4 py-2.5 text-left text-xs font-bold transition-colors ${
+                                          countryCode === c.dial ? "bg-exim-green/5 text-exim-green" : "hover:bg-gray-50 text-gray-700"
+                                        }`}
+                                      >
+                                        <span className="text-sm shrink-0">{c.flag}</span>
+                                        <span className="text-gray-400 font-semibold w-7 text-right shrink-0">{c.code}</span>
+                                        <span className="flex-1 truncate font-semibold text-gray-700">{c.name}</span>
+                                        <span className="text-exim-navy shrink-0">{c.dial}</span>
+                                      </button>
+                                    ))
+                                  ) : (
+                                    <div className="p-4 text-center text-xs font-semibold text-gray-400">
+                                      No countries found
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
+                            </>
+                          )}
+                        </div>
+                        {/* Phone Number Input */}
+                        <input
+                          type="text"
+                          name="phoneNumber"
+                          value={formData.phoneNumber}
+                          onChange={(e) => {
+                            const val = e.target.value;
+                            // Allow only numbers
+                            if (/^\d*$/.test(val)) {
+                              setFormData((prev) => ({
+                                ...prev,
+                                phoneNumber: val,
+                              }));
+                            }
+                          }}
+                          required
+                          placeholder="Enter mobile number"
+                          className="w-full text-xs font-semibold px-4 py-3 focus:outline-none text-gray-800 placeholder-gray-400 bg-transparent rounded-r-xl"
+                        />
+                      </div>
                     </div>
                     <div className="flex flex-col">
                       <label className="text-xs font-bold text-gray-700 mb-1.5 flex items-center">
@@ -606,41 +741,74 @@ export default function ContactUs() {
 
                   {/* Row 3: Message */}
                   <div className="flex flex-col">
-                    <label className="text-xs font-bold text-gray-700 mb-1.5 flex items-center">
-                      Message <span className="text-red-500 ml-1">*</span>
-                    </label>
+                    <div className="flex justify-between items-center mb-1.5">
+                      <label className="text-xs font-bold text-gray-700 flex items-center">
+                        Message <span className="text-red-500 ml-1">*</span>
+                      </label>
+                      <span className="text-[10px] font-bold text-gray-400">
+                        {formData.message.length}/500 characters
+                      </span>
+                    </div>
                     <textarea
                       name="message"
                       value={formData.message}
-                      onChange={handleInputChange}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        if (val.length <= 500) {
+                          setFormData((prev) => ({
+                            ...prev,
+                            message: val,
+                          }));
+                        }
+                      }}
                       required
                       rows={5}
+                      maxLength={500}
                       placeholder="Write your message here..."
                       className="w-full text-xs font-semibold px-4 py-3 border border-gray-200 rounded-xl focus:border-exim-green focus:outline-none bg-gray-50/20 text-gray-800 placeholder-gray-400 transition-colors resize-none"
                     ></textarea>
                   </div>
                 </div>
 
+                {submitError && (
+                  <div className="mt-4 p-3 bg-red-50 border border-red-100 text-red-600 text-xs font-bold rounded-xl text-center">
+                    {submitError}
+                  </div>
+                )}
+
                 {/* Submit Button */}
                 <div className="mt-6">
                   <button
                     type="submit"
-                    className="w-full py-3.5 px-6 rounded-xl bg-exim-green hover:bg-[#0e7c4b] text-white font-bold flex items-center justify-center gap-2 transition-all shadow-md active:scale-98 cursor-pointer"
+                    disabled={isSubmitting}
+                    className="w-full py-3.5 px-6 rounded-xl bg-exim-green hover:bg-[#0e7c4b] text-white font-bold flex items-center justify-center gap-2 transition-all shadow-md active:scale-98 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <svg
-                      className="w-4.5 h-4.5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2.5}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"
-                      />
-                    </svg>
-                    Send Message
+                    {isSubmitting ? (
+                      <>
+                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                        </svg>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <svg
+                          className="w-4.5 h-4.5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2.5}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"
+                          />
+                        </svg>
+                        Send Message
+                      </>
+                    )}
                   </button>
                 </div>
               </form>
@@ -663,14 +831,14 @@ export default function ContactUs() {
                 {/* Interactive Map Iframe */}
                 <div className="w-full h-[280px] rounded-xl overflow-hidden border border-gray-100 shadow-inner relative z-10 bg-gray-50">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7541.812458828788!2d72.8614262!3d19.06786!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c8edf4c6515d%3A0x77a9c8a0f3bca26a!2sTrade%20Centre%20BKC%20-%20The%20Wadhwa%20Group!5e0!3m2!1sen!2sin!4v1781752678354!5m2!1sen!2sin"
+                    src="https://maps.google.com/maps?q=MY%20EXIM%20CONNECT%20TECHNOLOGOES%20PRIVATE%20LIMITED,%20Ground%20Floor,%20Plot%20No:%20221,%20Door%20No:%208/8,%20Elango%20Street,%20Alwarthirunagar,%20Chennai,%20Tamilnadu,%20India%20%E2%80%93%20600087&t=&z=16&ie=UTF8&iwloc=&output=embed"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
                     allowFullScreen={true}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="EXIM Connect Mumbai BKC Head Office Location"
+                    title="MY EXIM CONNECT TECHNOLOGOES PRIVATE LIMITED Chennai Office Location"
                   ></iframe>
                 </div>
               </div>
@@ -682,20 +850,20 @@ export default function ContactUs() {
                     Our Office
                   </h4>
                   <p className="text-xs font-black text-exim-navy">
-                    EXIM Connect
+                    MY EXIM CONNECT TECHNOLOGOES PRIVATE LIMITED
                   </p>
                   <p className="text-xs font-semibold text-gray-500 leading-relaxed">
-                    Office No. 501, Trade Center,
+                    Ground Floor, Plot No: 221, Door No: 8/8,
                     <br />
-                    Bandra Kurla Complex,
+                    Elango Street, Alwarthirunagar,
                     <br />
-                    Mumbai, Maharashtra, India - 400051
+                    Chennai, Tamilnadu, India - 600087
                   </p>
                 </div>
 
                 {/* Get Directions Button */}
                 <a
-                  href="https://maps.google.com/?q=Trade+Centre,+Bandra+Kurla+Complex,+Mumbai"
+                  href="https://maps.google.com/?q=MY+EXIM+CONNECT+TECHNOLOGOES+PRIVATE+LIMITED,+Ground+Floor,+Plot+No:+221,+Door+No:+8/8,+Elango+Street,+Alwarthirunagar,+Chennai,+Tamilnadu,+India+–+600087"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-[#f0f7f3] hover:bg-[#e2f1e9] text-exim-green font-bold text-xs px-4 py-3 rounded-xl flex items-center gap-1.5 transition-colors self-start sm:self-auto shrink-0 shadow-sm border border-[#e2ece7] cursor-pointer"
@@ -818,27 +986,44 @@ export default function ContactUs() {
           </div>
 
           {/* Right: Contact Support Button */}
-          <div className="flex flex-col items-center sm:items-end shrink-0">
-            <a
-              href="mailto:contactus@myeximbusiness.com"
-              className="bg-exim-green hover:bg-[#0e7c4b] text-white font-extrabold text-xs px-6 py-3 rounded-xl flex items-center gap-2 transition-all shadow-md hover:scale-105 active:scale-98 cursor-pointer"
-            >
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2.5}
+          <div className="flex flex-col items-center sm:items-end shrink-0 gap-3">
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              {/* WhatsApp Button */}
+              <a
+                href="https://wa.me/919003062532?text=Hi%20MY%20EXIM%20Connect,%20I%20have%20an%20inquiry."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#25D366] hover:bg-[#1ebd59] text-white font-extrabold text-xs px-6 py-3 rounded-xl flex items-center gap-2 transition-all shadow-md hover:scale-105 active:scale-98 cursor-pointer"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M18.364 5.636l-3.536 3.536m0 0A5 5 0 1110.122 10.12l3.536-3.536m0-0.002a5 5 0 116.364 6.364M12 2A10 10 0 1022 12A10 10 0 0012 2z"
-                />
-              </svg>
-              Contact Support
-            </a>
-            <span className="text-[10px] font-bold text-gray-400 mt-2">
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.858.002-2.634-1.023-5.11-2.884-6.974C16.592 1.909 14.116.884 11.487.884c-5.443 0-9.867 4.42-9.871 9.858 0 1.93.505 3.811 1.464 5.483L1.993 22l6.096-1.599c1.6.87 3.298 1.328 4.558 1.328z"/>
+                  <path d="M17.472 14.382c-.3-.149-1.778-.878-2.046-.976-.269-.099-.463-.149-.658.149-.195.297-.752.975-.921 1.17-.17.195-.338.219-.638.07-.3-.15-1.267-.467-2.414-1.492-.893-.797-1.495-1.782-1.67-2.08-.175-.298-.018-.459.13-.607.135-.133.3-.347.45-.52.149-.174.199-.297.299-.497.099-.2.05-.376-.025-.525-.075-.149-.658-1.587-.901-2.172-.236-.57-.477-.492-.658-.5-.17-.008-.365-.01-.56-.01s-.51.074-.776.365c-.266.291-1.017.992-1.017 2.42 0 1.427 1.039 2.805 1.183 3.002.144.195 2.043 3.12 4.95 4.38.69.298 1.23.478 1.65.612.693.22 1.325.19 1.823.114.557-.083 1.778-.727 2.028-1.427.25-.7.25-1.3.175-1.427-.075-.127-.269-.201-.569-.35z"/>
+                </svg>
+                Chat on WhatsApp
+              </a>
+
+              {/* Email Button */}
+              <a
+                href="mailto:contactus@myeximbusiness.com"
+                className="bg-exim-green hover:bg-[#0e7c4b] text-white font-extrabold text-xs px-6 py-3 rounded-xl flex items-center gap-2 transition-all shadow-md hover:scale-105 active:scale-98 cursor-pointer"
+              >
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M18.364 5.636l-3.536 3.536m0 0A5 5 0 1110.122 10.12l3.536-3.536m0-0.002a5 5 0 116.364 6.364M12 2A10 10 0 1022 12A10 10 0 0012 2z"
+                  />
+                </svg>
+                Contact Support
+              </a>
+            </div>
+            <span className="text-[10px] font-bold text-gray-400">
               We'll get back to you soon!
             </span>
           </div>

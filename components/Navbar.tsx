@@ -23,11 +23,11 @@ export default function Navbar() {
         {/* Logo */}
         <a href="/" className="flex items-center group">
           <Image
-            src="/logo.png"
-            alt="EXIM Connect Logo"
-            width={180}
-            height={72}
-            className="h-16 w-auto object-contain group-hover:scale-105 transition-transform duration-200"
+            src="/logo1.png"
+            alt="MY EXIM Connect Logo"
+            width={220}
+            height={88}
+            className="h-20 w-auto object-contain group-hover:scale-105 transition-transform duration-200"
             priority
           />
         </a>

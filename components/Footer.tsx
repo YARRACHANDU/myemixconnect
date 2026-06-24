@@ -11,8 +11,8 @@ export default function Footer() {
         <div className="lg:col-span-4 flex flex-col">
           <a href="/" className="flex items-center">
             <Image
-              src="/logo.png"
-              alt="EXIM Connect Logo"
+              src="/logo1.png"
+              alt="MY EXIM Connect Logo"
               width={160}
               height={64}
               className="h-14 w-auto object-contain brightness-0 invert"
@@ -187,7 +187,10 @@ export default function Footer() {
                   d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                 />
               </svg>
-              <span>Mumbai, India</span>
+              <span>
+                Ground Floor, Plot No: 221, Door No: 8/8, Elango Street,
+                Alwarthirunagar, Chennai, Tamilnadu, India – 600087
+              </span>
             </li>
           </ul>
         </div>
@@ -195,7 +198,7 @@ export default function Footer() {
 
       {/* Copyright */}
       <div className="max-w-7xl mx-auto px-6 border-t border-gray-800 mt-8 pt-4 text-center text-xs font-semibold text-gray-500">
-        <p>© 2024 EXIM Connect. All Rights Reserved.</p>
+        <p>© 2024 MY EXIM Connect. All Rights Reserved.</p>
       </div>
     </footer>
   );

@@ -129,83 +129,11 @@ export default function About() {
 
             {/* Description */}
             <p className="text-gray-200 text-xs sm:text-sm mt-4 leading-relaxed font-semibold">
-              EXIM Connect is a digital platform created to empower Indian
+              MY EXIM Connect is a digital platform created to empower Indian
               Exporters, Buyers, and Freight Forwarders by bringing them
               together in a smart, simple, and transparent ecosystem.
             </p>
           </div>
-        </div>
-      </section>
-
-      {/* VISION & MISSION SECTION */}
-      <section className="py-12 bg-white border-b border-gray-100">
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10">
-          {/* Vision card */}
-          <ScrollReveal delay={0} className="h-full">
-            <div className="flex gap-4 items-start group">
-              <div className="w-12 h-12 rounded-full bg-[#f3f9f6] text-exim-green flex items-center justify-center shrink-0 shadow-inner group-hover:scale-110 transition-transform duration-300">
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                  />
-                </svg>
-              </div>
-              <div>
-                <h3 className="text-xl font-black text-exim-navy">
-                  Our Vision
-                </h3>
-                <p className="text-gray-600 mt-2 text-xs font-semibold leading-relaxed">
-                  To become the most trusted digital platform for the global
-                  EXIM community, enabling seamless connections, transparent
-                  trade, and limitless growth opportunities.
-                </p>
-              </div>
-            </div>
-          </ScrollReveal>
-
-          {/* Mission card */}
-          <ScrollReveal delay={150} className="h-full">
-            <div className="flex gap-4 items-start group">
-              <div className="w-12 h-12 rounded-full bg-[#f0f5fa] text-exim-blue flex items-center justify-center shrink-0 shadow-inner group-hover:scale-110 transition-transform duration-300">
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M18.364 5.636l-3.536 3.536m0 0A5 5 0 1110.122 10.12l3.536-3.536m0-0.002a5 5 0 116.364 6.364M12 2A10 10 0 1022 12A10 10 0 0012 2z"
-                  />
-                </svg>
-              </div>
-              <div>
-                <h3 className="text-xl font-black text-exim-navy">
-                  Our Mission
-                </h3>
-                <p className="text-gray-600 mt-2 text-xs font-semibold leading-relaxed">
-                  To simplify international trade for Indian businesses through
-                  technology, collaboration, and access to the right information
-                  at the right time.
-                </p>
-              </div>
-            </div>
-          </ScrollReveal>
         </div>
       </section>
 
@@ -234,7 +162,7 @@ export default function About() {
 
             <div className="mt-4 space-y-3 text-gray-600 text-xs sm:text-sm font-semibold leading-relaxed">
               <p>
-                EXIM Connect is an all-in-one digital platform designed for
+                MY EXIM Connect is an all-in-one digital platform designed for
                 Indian Exporters, Buyers, and Freight Forwarders.
               </p>
               <p>
@@ -244,7 +172,7 @@ export default function About() {
               </p>
               <p>
                 Our platform brings transparency, speed, and efficiency to your
-                EXIM operations—right at your fingertips.
+                MY EXIM operations—right at your fingertips.
               </p>
             </div>
 
@@ -342,13 +270,85 @@ export default function About() {
         </div>
       </section>
 
+      {/* VISION & MISSION SECTION */}
+      <section className="py-12 bg-white border-b border-gray-100">
+        <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10">
+          {/* Vision card */}
+          <ScrollReveal delay={0} className="h-full">
+            <div className="flex gap-4 items-start group">
+              <div className="w-12 h-12 rounded-full bg-[#f3f9f6] text-exim-green flex items-center justify-center shrink-0 shadow-inner group-hover:scale-110 transition-transform duration-300">
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-xl font-black text-exim-navy">
+                  Our Vision
+                </h3>
+                <p className="text-gray-600 mt-2 text-xs font-semibold leading-relaxed">
+                  To become the most trusted digital platform for the global
+                  EXIM community, enabling seamless connections, transparent
+                  trade, and limitless growth opportunities.
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* Mission card */}
+          <ScrollReveal delay={150} className="h-full">
+            <div className="flex gap-4 items-start group">
+              <div className="w-12 h-12 rounded-full bg-[#f0f5fa] text-exim-blue flex items-center justify-center shrink-0 shadow-inner group-hover:scale-110 transition-transform duration-300">
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M18.364 5.636l-3.536 3.536m0 0A5 5 0 1110.122 10.12l3.536-3.536m0-0.002a5 5 0 116.364 6.364M12 2A10 10 0 1022 12A10 10 0 0012 2z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-xl font-black text-exim-navy">
+                  Our Mission
+                </h3>
+                <p className="text-gray-600 mt-2 text-xs font-semibold leading-relaxed">
+                  To simplify international trade for Indian businesses through
+                  technology, collaboration, and access to the right information
+                  at the right time.
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* WHY CHOOSE EXIM CONNECT */}
       <section className="py-12 bg-gray-50 border-y border-gray-100">
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto">
             <ScrollReveal>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-exim-navy">
-                Why Choose EXIM Connect?
+                Why Choose MY EXIM Connect?
               </h2>
               <div className="w-16 h-1 bg-exim-green mx-auto mt-3 rounded-full"></div>
             </ScrollReveal>
@@ -374,7 +374,7 @@ export default function About() {
                   </svg>
                 </div>
                 <h3 className="text-xs sm:text-sm font-black text-exim-navy mt-3 leading-tight">
-                  Built for EXIM Community
+                  Built for MY EXIM Community
                 </h3>
                 <p className="text-gray-500 text-[10px] sm:text-[11px] font-semibold mt-2 px-0.5 leading-snug">
                   A platform specially designed for Exporters, Buyers & Freight
@@ -560,7 +560,7 @@ export default function About() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-2xl sm:text-3xl font-black text-exim-green leading-none">
-                    1000+
+                    100+
                   </span>
                   <span className="text-[10px] font-bold text-gray-400 mt-1 uppercase tracking-wider">
                     Exporters
@@ -594,7 +594,7 @@ export default function About() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-2xl sm:text-3xl font-black text-exim-green leading-none">
-                    500+
+                    150+
                   </span>
                   <span className="text-[10px] font-bold text-gray-400 mt-1 uppercase tracking-wider">
                     Forwarders
@@ -623,7 +623,7 @@ export default function About() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-2xl sm:text-3xl font-black text-exim-green leading-none">
-                    800+
+                    50+
                   </span>
                   <span className="text-[10px] font-bold text-gray-400 mt-1 uppercase tracking-wider">
                     Buyers
@@ -652,7 +652,7 @@ export default function About() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-2xl sm:text-3xl font-black text-exim-green leading-none">
-                    50+
+                    10+
                   </span>
                   <span className="text-[10px] font-bold text-gray-400 mt-1 uppercase tracking-wider">
                     Countries
@@ -674,12 +674,12 @@ export default function About() {
                 Let's Grow Together
               </h2>
               <p className="text-gray-600 mt-3 font-semibold text-xs sm:text-sm leading-relaxed">
-                Join EXIM Connect today and take your business to global markets
+                Join MY EXIM Connect today and take your business to global markets
                 with confidence.
               </p>
               <div className="mt-6">
                 <button className="py-3 px-6 rounded-full bg-exim-green hover:bg-[#0e7c4b] text-white text-xs font-bold transition-all shadow-md hover:scale-105 duration-200">
-                  Join Now
+                  <a href="/app-download"> Let's Start </a>
                 </button>
               </div>
             </div>

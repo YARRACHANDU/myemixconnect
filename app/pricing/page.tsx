@@ -90,28 +90,24 @@ export default function Pricing() {
 
   const faqs: FAQItem[] = [
     {
-      question: "Is the 60 days free trial really free?",
-      answer: "Yes, absolutely. You get full access to all features on EXIM Connect for 60 days without any charges. No credit card is required to sign up or start your trial."
+      question: "Is MY EXIM Connect really free to use?",
+      answer: "Yes, absolutely. The platform is completely free for all users. There are no registration fees, no subscription costs, and no hidden charges."
     },
     {
-      question: "What happens after the 60 days free trial?",
-      answer: "After 60 days, to continue using the platform and keeping your active connections, you can subscribe to our simple plan for $10/month. We will notify you before your trial ends."
+      question: "Do I need to enter a credit card to sign up?",
+      answer: "No. You do not need to provide any credit card or payment details to register and start using the platform."
     },
     {
-      question: "Can I cancel my subscription anytime?",
-      answer: "Yes, you can cancel your subscription at any time. There are no contracts, commitments, or cancellation fees. You will continue to have access until the end of your billing cycle."
+      question: "Is this free plan for Exporters, Freight Forwarders, and Buyers?",
+      answer: "Yes, MY EXIM Connect is completely free for all roles. Exporters, Freight Forwarders, and Buyers all get full access to the features tailored for their workflows."
     },
     {
-      question: "Is this plan for Exporters, Freight Forwarders and Buyers?",
-      answer: "Yes, EXIM Connect has a single, unified plan that serves all user roles. Exporters, Freight Forwarders, and Buyers all get complete access to the features tailored for their workflows."
+      question: "Are there any limits on connections or inquiries?",
+      answer: "No. All users can connect with unlimited verified members, search rates, and send or receive quotes without any limitations."
     },
     {
-      question: "Do you offer refunds?",
-      answer: "We offer a 7-day money-back guarantee if you are not satisfied with the platform after your subscription starts. Please contact our support team to request a refund."
-    },
-    {
-      question: "What payment methods do you accept?",
-      answer: "We accept all major credit cards, debit cards, UPI, and international payment gateways via our secure checkout system."
+      question: "How does MY EXIM Connect keep the platform secure?",
+      answer: "We verify all user profiles and implement strict security protocols to ensure that all communication, requests, and data on the platform remain safe and reliable."
     }
   ];
 
@@ -152,20 +148,20 @@ export default function Pricing() {
           <div className="w-full lg:w-[48%] flex flex-col justify-center animate-fade-in-up">
             {/* Tag/Badge */}
             <span className="text-[10px] sm:text-xs font-black tracking-widest text-exim-green uppercase mb-3">
-              Simple & Transparent Pricing
+              Always Free to Use
             </span>
 
             {/* Title & Accent */}
             <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-exim-navy tracking-tight leading-none">
-              One Plan.
+              Absolutely Free.
             </h1>
             <h2 className="text-exim-green font-black text-3xl sm:text-4xl lg:text-[42px] leading-tight">
-              Unlimited Opportunities.
+              For Everyone.
             </h2>
 
             {/* Description Paragraph */}
             <p className="mt-5 text-gray-600 text-sm sm:text-base font-semibold leading-relaxed max-w-xl">
-              EXIM Connect is for everyone. Whether you are an Exporter, Freight Forwarder or Buyer – our plan is the same for all.
+              MY EXIM Connect is for everyone. Exporters, Freight Forwarders and Buyers – connect and grow your business at zero cost.
             </p>
 
             {/* Micro-badges under description */}
@@ -176,7 +172,7 @@ export default function Pricing() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <span>60 Days Free Trial</span>
+                <span>Absolutely Free</span>
               </div>
               
               <div className="w-px h-3.5 bg-gray-200 hidden sm:block"></div>
@@ -187,7 +183,7 @@ export default function Pricing() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <span>Cancel Anytime</span>
+                <span>No Subscription</span>
               </div>
 
               <div className="w-px h-3.5 bg-gray-200 hidden sm:block"></div>
@@ -211,7 +207,7 @@ export default function Pricing() {
         <div className="text-center max-w-3xl mx-auto px-6">
           <ScrollReveal>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-exim-navy inline-block relative pb-2">
-              All Users. One Plan. Maximum Value.
+              All Users. Always Free. Maximum Value.
             </h2>
             <div className="w-16 h-1 bg-exim-green mx-auto mt-3 rounded-full"></div>
             <p className="text-gray-500 mt-4 font-semibold text-sm sm:text-base leading-relaxed">
@@ -227,18 +223,17 @@ export default function Pricing() {
               {/* Green top bar */}
               <div className="bg-exim-green text-center py-4">
                 <span className="text-white text-xs sm:text-sm font-black tracking-widest uppercase">
-                  60 Days Free Trial
+                  ITS ABSOLUTELY FREE TO USE!
                 </span>
               </div>
 
               {/* Price Details */}
               <div className="p-8 sm:p-10 text-center border-b border-gray-100">
-                <p className="text-gray-400 text-xs sm:text-sm font-extrabold">After 60 days</p>
+                <p className="text-gray-400 text-xs sm:text-sm font-extrabold uppercase tracking-wider">For All Users</p>
                 <div className="flex items-center justify-center gap-1.5 mt-2">
-                  <span className="text-4xl sm:text-5xl font-black text-exim-green">$10</span>
-                  <span className="text-gray-500 text-sm sm:text-base font-bold">/ month</span>
+                  <span className="text-4xl sm:text-5xl font-black text-exim-green">Free</span>
                 </div>
-                <p className="text-gray-400 text-[10px] sm:text-xs font-semibold mt-1">Billed monthly</p>
+                <p className="text-gray-400 text-xs sm:text-sm font-semibold mt-2">No subscription. No hidden charges.</p>
               </div>
 
               {/* Features Columns Grid */}
@@ -287,11 +282,11 @@ export default function Pricing() {
               {/* Try premium banner inside card */}
               <div className="p-6 bg-white border-t border-gray-100 flex justify-center">
                 <div className="bg-[#f0f7f3] text-gray-600 rounded-2xl py-3.5 px-6 flex items-center gap-3 w-full max-w-xl justify-center text-xs font-bold text-center">
-                  <svg className="w-5 h-5 text-exim-green shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                  <svg className="w-5 h-5 text-exim-green shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M5 5a3 3 0 015-2.236A3 3 0 0115 5h2a1 1 0 011 1v3a1 1 0 01-1 1h-1v7a2 2 0 01-2 2H6a2 2 0 01-2-2v-7H3a1 1 0 01-1-1V6a1 1 0 011-1h2zm2.5 0a1 1 0 100-2 1 1 0 000 2zM12.5 5a1 1 0 100-2 1 1 0 000 2zM4 7v2h12V7H4zm2 4v7h3.5v-7H6zm5.5 0v7H14v-7h-2.5z" clipRule="evenodd" />
                   </svg>
                   <span>
-                    Try all premium <span className="text-exim-green">features free for 60 days. No credit card required.</span>
+                    A completely <span className="text-exim-green">free platform to help your MY EXIM business grow globally.</span>
                   </span>
                 </div>
               </div>
@@ -368,7 +363,7 @@ export default function Pricing() {
         <div className="text-center max-w-3xl mx-auto px-6">
           <ScrollReveal>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-exim-navy">
-              Why Users Trust EXIM Connect
+              Why Users Trust MY EXIM Connect
             </h2>
             <div className="w-16 h-1 bg-exim-green mx-auto mt-3 mb-10 rounded-full"></div>
           </ScrollReveal>
@@ -504,10 +499,10 @@ export default function Pricing() {
 
               <div>
                 <h3 className="text-base sm:text-lg font-extrabold text-[#002244] leading-tight">
-                  Start Your 60 Days Free Trial Today!
+                  Start Using MY EXIM Connect Free Today!
                 </h3>
                 <p className="text-gray-500 text-xs sm:text-sm font-semibold mt-1.5">
-                  Join thousands of users who trust EXIM Connect.
+                  Join thousands of users who trust MY EXIM Connect.
                 </p>
               </div>
             </div>
@@ -526,8 +521,11 @@ export default function Pricing() {
               </a>
               <a href="#" className="hover:scale-105 active:scale-98 transition-transform duration-200">
                 <div className="bg-black text-white px-3.5 py-1.5 rounded-lg flex items-center gap-1.5 border border-gray-800 shadow-md">
-                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M5.23 3c-.115.025-.23.07-.33.14l10.96 10.96 3.12-3.12-13.43-7.73c-.106-.062-.218-.088-.32-.05zm-1.6 1.48c-.062.158-.09.344-.09.55v13.94c0 .206.028.392.09.55l7.98-7.98-7.98-8.01zm9.64 6.53L3.89 21c.102.03.214.004.32-.058l13.43-7.73-3.12-3.12-1.24 1.25z" />
+                  <svg className="w-4 h-4" viewBox="0 0 96.3 96.3">
+                    <path fill="#EA4335" d="M46.884 45.762 10.337 84.18a.745.745 0 0 0 .006.023c1.121 4.171 4.967 7.243 9.534 7.243a9.918 9.918 0 0 0 5.008-1.346l.116-.069 41.138-23.509-19.255-20.76z"/>
+                    <path fill="#FBBC04" d="m83.858 39.22-.035-.023-17.76-10.198-20.009 17.635 20.079 19.883L83.8 56.422c3.097-1.657 5.2-4.89 5.2-8.618 0-3.705-2.074-6.921-5.142-8.584z"/>
+                    <path fill="#4285F4" d="M10.335 11.264A9.54 9.54 0 0 0 10 13.78v67.886c.036.974.115 1.715.337 2.514l37.804-37.434-37.806-35.482z"/>
+                    <path fill="#34A853" d="m47.154 47.723 18.915-18.73L24.978 5.398A9.962 9.962 0 0 0 19.877 4c-4.567 0-8.419 3.078-9.54 7.255l-.002.01 36.819 36.458z"/>
                   </svg>
                   <div className="flex flex-col text-left">
                     <span className="text-[7px] uppercase tracking-wider text-gray-400 font-medium leading-none">Get it on</span>

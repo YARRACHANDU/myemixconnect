@@ -111,7 +111,7 @@ export default function Home() {
               </span>
             </h1>
             <h2 className="text-xl sm:text-2xl font-extrabold text-exim-navy mt-3 leading-tight animate-slide-in-left" style={{ animationDelay: "0.2s" }}>
-              Your EXIM Business Is in Your Hand
+              Your MY EXIM Business Is in Your Hand
             </h2>
             <p className="text-gray-600 text-sm mt-3 leading-relaxed font-semibold">
               A smart digital platform for Indian Exporters, Buyers and Freight Forwarders to connect, quote, collaborate and grow business faster.
@@ -143,8 +143,11 @@ export default function Home() {
             <div className="flex items-center gap-3 mt-5 pt-3 border-t border-gray-200/50 w-full">
               <a href="#" className="hover:opacity-90 transition-all hover:scale-103 duration-200 animate-scale-in" style={{ animationDelay: "0.5s" }}>
                 <div className="bg-black text-white px-3 py-1.5 rounded-lg flex items-center gap-1.5 border border-gray-800 shadow-md">
-                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M5.23 3c-.115.025-.23.07-.33.14l10.96 10.96 3.12-3.12-13.43-7.73c-.106-.062-.218-.088-.32-.05zm-1.6 1.48c-.062.158-.09.344-.09.55v13.94c0 .206.028.392.09.55l7.98-7.98-7.98-8.01zm9.64 6.53L3.89 21c.102.03.214.004.32-.058l13.43-7.73-3.12-3.12-1.24 1.25z" />
+                  <svg className="w-4 h-4" viewBox="0 0 96.3 96.3">
+                    <path fill="#EA4335" d="M46.884 45.762 10.337 84.18a.745.745 0 0 0 .006.023c1.121 4.171 4.967 7.243 9.534 7.243a9.918 9.918 0 0 0 5.008-1.346l.116-.069 41.138-23.509-19.255-20.76z"/>
+                    <path fill="#FBBC04" d="m83.858 39.22-.035-.023-17.76-10.198-20.009 17.635 20.079 19.883L83.8 56.422c3.097-1.657 5.2-4.89 5.2-8.618 0-3.705-2.074-6.921-5.142-8.584z"/>
+                    <path fill="#4285F4" d="M10.335 11.264A9.54 9.54 0 0 0 10 13.78v67.886c.036.974.115 1.715.337 2.514l37.804-37.434-37.806-35.482z"/>
+                    <path fill="#34A853" d="m47.154 47.723 18.915-18.73L24.978 5.398A9.962 9.962 0 0 0 19.877 4c-4.567 0-8.419 3.078-9.54 7.255l-.002.01 36.819 36.458z"/>
                   </svg>
                   <div className="flex flex-col text-left">
                     <span className="text-[7px] uppercase tracking-wider text-gray-400 font-medium leading-none">Get it on</span>
@@ -169,7 +172,7 @@ export default function Home() {
           <div className="w-full relative aspect-[16/10] animate-fade-in">
             <Image
               src="/banner.png"
-              alt="EXIM Connect Banner"
+              alt="MY EXIM Connect Banner"
               fill
               priority
               className="object-cover object-right"
@@ -206,7 +209,7 @@ export default function Home() {
                   </span>
                 </h1>
                 <h2 className="text-xl lg:text-[24px] xl:text-[26px] font-extrabold text-exim-navy mt-4 leading-tight animate-slide-in-left" style={{ animationDelay: "0.3s" }}>
-                  Your EXIM Business Is in Your Hand
+                  Your MY EXIM Business Is in Your Hand
                 </h2>
                 <p className="text-gray-600 text-xs lg:text-sm mt-4 leading-relaxed font-semibold">
                   A smart digital platform for Indian Exporters, Buyers and Freight Forwarders to connect, quote, collaborate and grow business faster.
@@ -238,8 +241,11 @@ export default function Home() {
                 <div className="flex items-center gap-3 mt-6 pt-4 border-t border-gray-200/50 w-full max-w-sm">
                   <a href="#" className="hover:opacity-90 transition-all hover:scale-105 duration-200 animate-scale-in" style={{ animationDelay: "0.8s" }}>
                     <div className="bg-black text-white px-3 py-1.5 rounded-lg flex items-center gap-1.5 border border-gray-800 shadow-md">
-                      <svg className="w-4.5 h-4.5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M5.23 3c-.115.025-.23.07-.33.14l10.96 10.96 3.12-3.12-13.43-7.73c-.106-.062-.218-.088-.32-.05zm-1.6 1.48c-.062.158-.09.344-.09.55v13.94c0 .206.028.392.09.55l7.98-7.98-7.98-8.01zm9.64 6.53L3.89 21c.102.03.214.004.32-.058l13.43-7.73-3.12-3.12-1.24 1.25z" />
+                      <svg className="w-4.5 h-4.5" viewBox="0 0 96.3 96.3">
+                        <path fill="#EA4335" d="M46.884 45.762 10.337 84.18a.745.745 0 0 0 .006.023c1.121 4.171 4.967 7.243 9.534 7.243a9.918 9.918 0 0 0 5.008-1.346l.116-.069 41.138-23.509-19.255-20.76z"/>
+                        <path fill="#FBBC04" d="m83.858 39.22-.035-.023-17.76-10.198-20.009 17.635 20.079 19.883L83.8 56.422c3.097-1.657 5.2-4.89 5.2-8.618 0-3.705-2.074-6.921-5.142-8.584z"/>
+                        <path fill="#4285F4" d="M10.335 11.264A9.54 9.54 0 0 0 10 13.78v67.886c.036.974.115 1.715.337 2.514l37.804-37.434-37.806-35.482z"/>
+                        <path fill="#34A853" d="m47.154 47.723 18.915-18.73L24.978 5.398A9.962 9.962 0 0 0 19.877 4c-4.567 0-8.419 3.078-9.54 7.255l-.002.01 36.819 36.458z"/>
                       </svg>
                       <div className="flex flex-col text-left">
                         <span className="text-[7px] uppercase tracking-wider text-gray-400 font-medium leading-none">Get it on</span>
@@ -581,82 +587,62 @@ export default function Home() {
             <div className="absolute right-0 top-0 w-80 h-80 bg-exim-blue/10 rounded-full blur-3xl pointer-events-none"></div>
             <div className="absolute left-0 bottom-0 w-80 h-80 bg-exim-green/10 rounded-full blur-3xl pointer-events-none"></div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center p-6 sm:p-12 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 lg:gap-12 items-center p-8 sm:p-12 md:p-16 relative z-10">
               
               {/* White Card Plan */}
               <ScrollReveal direction="left" className="w-full">
-                <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-lg border border-white/20 transform hover:scale-[1.01] transition-transform duration-300">
-                  <div className="flex justify-center mb-4">
-                    <div className="w-12 h-12 rounded-full bg-exim-green/10 flex items-center justify-center">
-                      <svg className="w-6 h-6 text-exim-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                      </svg>
-                    </div>
+                <div className="bg-white rounded-3xl p-8 sm:p-10 shadow-lg border border-white/20 transform hover:scale-[1.01] transition-transform duration-300 relative pt-12">
+                  {/* Top Circle overlapping */}
+                  <div className="absolute -top-7 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-exim-green flex items-center justify-center border-4 border-exim-navy shadow-md">
+                    <svg className="w-7 h-7 text-white" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M5 5a3 3 0 015-2.236A3 3 0 0115 5h2a1 1 0 011 1v3a1 1 0 01-1 1h-1v7a2 2 0 01-2 2H6a2 2 0 01-2-2v-7H3a1 1 0 01-1-1V6a1 1 0 011-1h2zm2.5 0a1 1 0 100-2 1 1 0 000 2zM12.5 5a1 1 0 100-2 1 1 0 000 2zM4 7v2h12V7H4zm2 4v7h3.5v-7H6zm5.5 0v7H14v-7h-2.5z" clipRule="evenodd" />
+                    </svg>
                   </div>
 
-                  <div className="text-center">
-                    <span className="text-[10px] uppercase font-extrabold text-exim-navy tracking-widest bg-gray-100 py-1 px-3.5 rounded-full">
-                      Full Access
-                    </span>
-                    <div className="mt-3 flex items-center justify-center gap-1">
-                      <span className="text-3xl sm:text-4xl font-black text-exim-green">$10</span>
-                      <span className="text-gray-400 text-xs font-semibold">/ Month</span>
-                    </div>
+                  <h4 className="text-exim-green font-black text-center text-sm sm:text-base tracking-wider uppercase">
+                    ITS ABSOLUTELY FREE TO USE!
+                  </h4>
+                  <p className="text-gray-800 font-extrabold text-xs sm:text-sm text-center mt-1.5">
+                    For All Users
+                  </p>
+
+                  <div className="flex flex-col items-center mt-6">
+                    <ul className="space-y-3.5 text-left">
+                      {[
+                        "No Registration Fees",
+                        "No Subscription Fees",
+                        "No Hidden Charges"
+                      ].map((benefit, idx) => (
+                        <li key={idx} className="flex items-center gap-3 text-xs sm:text-sm font-extrabold text-gray-800">
+                          <div className="w-4.5 h-4.5 rounded-full bg-exim-green text-white flex items-center justify-center shrink-0 shadow-sm">
+                            <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={4}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                          <span>{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-
-                  <ul className="mt-6 space-y-3 border-t border-gray-100 pt-4">
-                    {[
-                      "Full access to all features",
-                      "Connect unlimited exporters, buyers & forwarders",
-                      "Receive & send unlimited quotations",
-                      "Global rate search & personal rate management",
-                      "Secure & trusted business network"
-                    ].map((benefit, idx) => (
-                      <li key={idx} className="flex items-start gap-2.5 text-xs font-semibold text-gray-700">
-                        <div className="w-4 h-4 rounded-full bg-green-50 text-exim-green flex items-center justify-center shrink-0 mt-0.5">
-                          <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3.5}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                          </svg>
-                        </div>
-                        <span>{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <a href="/pricing" className="block w-full mt-6 py-3 px-5 rounded-2xl bg-exim-green hover:bg-[#0e7c4b] text-white text-xs font-bold transition-all shadow-md hover:shadow-lg text-center active:scale-98">
-                    Get Started Now
-                  </a>
                 </div>
               </ScrollReveal>
 
+              {/* Vertical Divider on desktop */}
+              <div className="hidden lg:block w-px h-32 bg-white/15"></div>
+
               {/* Dark right column */}
               <ScrollReveal direction="right" className="text-white flex flex-col justify-center">
-                <h3 className="text-xl sm:text-2xl font-extrabold leading-tight">
-                  One simple plan. Full access. <br />
-                  Cancel anytime. No hidden charges.
+                <h3 className="text-2xl sm:text-3xl font-black text-exim-green leading-tight">
+                  Absolutely Free to Use!
                 </h3>
                 
-                <div className="mt-4 flex items-baseline gap-1.5">
-                  <span className="text-3xl font-black text-exim-green">$10</span>
-                  <span className="text-exim-green font-bold text-base">/ Month</span>
-                </div>
-
-                <p className="mt-4 text-gray-300 text-xs sm:text-sm leading-relaxed font-semibold">
-                  Everything you need to grow your EXIM business, all in one platform. Streamline communication, match with verified forwarders, search rates on critical corridors, and export with absolute peace of mind.
+                <p className="text-gray-300 text-xs sm:text-sm font-bold mt-1.5">
+                  No subscription. No hidden charges.
                 </p>
 
-                <div className="mt-6 flex items-center gap-3">
-                  <div className="flex -space-x-2.5">
-                    {[1, 2, 3, 4].map((n) => (
-                      <div key={n} className="w-8 h-8 rounded-full border border-exim-navy bg-gradient-to-tr from-gray-200 to-gray-400 flex items-center justify-center text-[10px] font-bold text-gray-800">
-                        {n === 4 ? "+99" : ""}
-                      </div>
-                    ))}
-                  </div>
-                  <span className="text-xs font-semibold text-gray-400">
-                    Trusted by 10k+ businesses globally
-                  </span>
-                </div>
+                <p className="mt-8 text-white text-base sm:text-lg lg:text-xl font-bold leading-relaxed max-w-md">
+                  A completely free platform to help your MY EXIM business grow globally.
+                </p>
               </ScrollReveal>
 
             </div>
@@ -671,14 +657,17 @@ export default function Home() {
             Download the App
           </h2>
           <p className="text-gray-500 mt-2 font-semibold text-sm sm:text-base">
-            Take your EXIM business anywhere, anytime.
+            Take your MY EXIM business anywhere, anytime.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
             <a href="#" className="hover:scale-105 active:scale-98 transition-transform duration-200">
               <div className="bg-black text-white px-5 py-2.5 rounded-xl flex items-center gap-2.5 border border-gray-800 shadow-md">
-                <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M5.23 3c-.115.025-.23.07-.33.14l10.96 10.96 3.12-3.12-13.43-7.73c-.106-.062-.218-.088-.32-.05zm-1.6 1.48c-.062.158-.09.344-.09.55v13.94c0 .206.028.392.09.55l7.98-7.98-7.98-8.01zm9.64 6.53L3.89 21c.102.03.214.004.32-.058l13.43-7.73-3.12-3.12-1.24 1.25z" />
+                <svg className="w-6 h-6" viewBox="0 0 96.3 96.3">
+                  <path fill="#EA4335" d="M46.884 45.762 10.337 84.18a.745.745 0 0 0 .006.023c1.121 4.171 4.967 7.243 9.534 7.243a9.918 9.918 0 0 0 5.008-1.346l.116-.069 41.138-23.509-19.255-20.76z"/>
+                  <path fill="#FBBC04" d="m83.858 39.22-.035-.023-17.76-10.198-20.009 17.635 20.079 19.883L83.8 56.422c3.097-1.657 5.2-4.89 5.2-8.618 0-3.705-2.074-6.921-5.142-8.584z"/>
+                  <path fill="#4285F4" d="M10.335 11.264A9.54 9.54 0 0 0 10 13.78v67.886c.036.974.115 1.715.337 2.514l37.804-37.434-37.806-35.482z"/>
+                  <path fill="#34A853" d="m47.154 47.723 18.915-18.73L24.978 5.398A9.962 9.962 0 0 0 19.877 4c-4.567 0-8.419 3.078-9.54 7.255l-.002.01 36.819 36.458z"/>
                 </svg>
                 <div className="flex flex-col text-left">
                   <span className="text-[9px] uppercase tracking-wider text-gray-400 font-medium leading-none">Get it on</span>
