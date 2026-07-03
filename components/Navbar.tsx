@@ -23,7 +23,7 @@ export default function Navbar() {
         {/* Logo */}
         <a href="/" className="flex items-center group">
           <Image
-            src="/logo1.png"
+            src="/logo3.png"
             alt="MY EXIM Connect Logo"
             width={220}
             height={88}

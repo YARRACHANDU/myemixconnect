@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="lg:col-span-4 flex flex-col">
           <a href="/" className="flex items-center">
             <Image
-              src="/logo1.png"
+              src="/logo3.png"
               alt="MY EXIM Connect Logo"
               width={160}
               height={64}

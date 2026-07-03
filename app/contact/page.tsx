@@ -92,12 +92,13 @@ export default function ContactUs() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
 
-  const currentCountry = countryCodes.find(c => c.dial === countryCode) || countryCodes[0];
+  const currentCountry =
+    countryCodes.find((c) => c.dial === countryCode) || countryCodes[0];
   const filteredCountries = countryCodes.filter(
     (c) =>
       c.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       c.dial.includes(searchQuery) ||
-      c.code.toLowerCase().includes(searchQuery.toLowerCase())
+      c.code.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   // Form state
@@ -401,15 +402,15 @@ export default function ContactUs() {
               <p className="text-sm font-bold text-gray-700 hover:text-exim-green transition-colors">
                 <a href="tel:+919003062532">+91 9003062532</a>
               </p>
-              <a 
-                href="https://wa.me/919003062532?text=Hi%20MY%20EXIM%20Connect,%20I%20have%20an%20inquiry." 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://wa.me/919003062532?text=Hi%20MY%20EXIM%20Connect,%20I%20have%20an%20inquiry."
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366] hover:text-white font-extrabold text-xs transition-all shadow-sm duration-300"
               >
                 <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.858.002-2.634-1.023-5.11-2.884-6.974C16.592 1.909 14.116.884 11.487.884c-5.443 0-9.867 4.42-9.871 9.858 0 1.93.505 3.811 1.464 5.483L1.993 22l6.096-1.599c1.6.87 3.298 1.328 4.558 1.328z"/>
-                  <path d="M17.472 14.382c-.3-.149-1.778-.878-2.046-.976-.269-.099-.463-.149-.658.149-.195.297-.752.975-.921 1.17-.17.195-.338.219-.638.07-.3-.15-1.267-.467-2.414-1.492-.893-.797-1.495-1.782-1.67-2.08-.175-.298-.018-.459.13-.607.135-.133.3-.347.45-.52.149-.174.199-.297.299-.497.099-.2.05-.376-.025-.525-.075-.149-.658-1.587-.901-2.172-.236-.57-.477-.492-.658-.5-.17-.008-.365-.01-.56-.01s-.51.074-.776.365c-.266.291-1.017.992-1.017 2.42 0 1.427 1.039 2.805 1.183 3.002.144.195 2.043 3.12 4.95 4.38.69.298 1.23.478 1.65.612.693.22 1.325.19 1.823.114.557-.083 1.778-.727 2.028-1.427.25-.7.25-1.3.175-1.427-.075-.127-.269-.201-.569-.35z"/>
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.858.002-2.634-1.023-5.11-2.884-6.974C16.592 1.909 14.116.884 11.487.884c-5.443 0-9.867 4.42-9.871 9.858 0 1.93.505 3.811 1.464 5.483L1.993 22l6.096-1.599c1.6.87 3.298 1.328 4.558 1.328z" />
+                  <path d="M17.472 14.382c-.3-.149-1.778-.878-2.046-.976-.269-.099-.463-.149-.658.149-.195.297-.752.975-.921 1.17-.17.195-.338.219-.638.07-.3-.15-1.267-.467-2.414-1.492-.893-.797-1.495-1.782-1.67-2.08-.175-.298-.018-.459.13-.607.135-.133.3-.347.45-.52.149-.174.199-.297.299-.497.099-.2.05-.376-.025-.525-.075-.149-.658-1.587-.901-2.172-.236-.57-.477-.492-.658-.5-.17-.008-.365-.01-.56-.01s-.51.074-.776.365c-.266.291-1.017.992-1.017 2.42 0 1.427 1.039 2.805 1.183 3.002.144.195 2.043 3.12 4.95 4.38.69.298 1.23.478 1.65.612.693.22 1.325.19 1.823.114.557-.083 1.778-.727 2.028-1.427.25-.7.25-1.3.175-1.427-.075-.127-.269-.201-.569-.35z" />
                 </svg>
                 Chat on WhatsApp
               </a>
@@ -478,7 +479,7 @@ export default function ContactUs() {
                 Head Office
               </h3>
               <p className="text-sm font-bold text-gray-700">
-                MY EXIM CONNECT TECHNOLOGOES PRIVATE LIMITED, Ground Floor, Plot
+                MY EXIM CONNECT TECHNOLOGIES PRIVATE LIMITED, Ground Floor, Plot
                 No: 221, Door No: 8/8, Elango Street, Alwarthirunagar, Chennai,
                 Tamilnadu, India
               </p>
@@ -601,7 +602,8 @@ export default function ContactUs() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="flex flex-col">
                       <label className="text-xs font-bold text-gray-700 mb-1.5 flex items-center">
-                        Phone Number <span className="text-red-500 ml-1">*</span>
+                        Phone Number{" "}
+                        <span className="text-red-500 ml-1">*</span>
                       </label>
                       <div className="flex rounded-xl border border-gray-200 focus-within:border-exim-green transition-colors bg-gray-50/20 relative">
                         {/* Country Code Dropdown */}
@@ -615,8 +617,18 @@ export default function ContactUs() {
                               <span>{currentCountry.flag}</span>
                               <span>{countryCode}</span>
                             </span>
-                            <svg className="w-3 h-3 text-gray-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M19 9l-7 7-7-7" />
+                            <svg
+                              className="w-3 h-3 text-gray-500 shrink-0"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2.2}
+                                d="M19 9l-7 7-7-7"
+                              />
                             </svg>
                           </button>
 
@@ -637,7 +649,9 @@ export default function ContactUs() {
                                     type="text"
                                     placeholder="Search country or dial code..."
                                     value={searchQuery}
-                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                    onChange={(e) =>
+                                      setSearchQuery(e.target.value)
+                                    }
                                     className="w-full text-xs font-semibold px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-exim-green text-gray-800 bg-white"
                                   />
                                 </div>
@@ -654,13 +668,23 @@ export default function ContactUs() {
                                           setSearchQuery("");
                                         }}
                                         className={`w-full flex items-center gap-2.5 px-4 py-2.5 text-left text-xs font-bold transition-colors ${
-                                          countryCode === c.dial ? "bg-exim-green/5 text-exim-green" : "hover:bg-gray-50 text-gray-700"
+                                          countryCode === c.dial
+                                            ? "bg-exim-green/5 text-exim-green"
+                                            : "hover:bg-gray-50 text-gray-700"
                                         }`}
                                       >
-                                        <span className="text-sm shrink-0">{c.flag}</span>
-                                        <span className="text-gray-400 font-semibold w-7 text-right shrink-0">{c.code}</span>
-                                        <span className="flex-1 truncate font-semibold text-gray-700">{c.name}</span>
-                                        <span className="text-exim-navy shrink-0">{c.dial}</span>
+                                        <span className="text-sm shrink-0">
+                                          {c.flag}
+                                        </span>
+                                        <span className="text-gray-400 font-semibold w-7 text-right shrink-0">
+                                          {c.code}
+                                        </span>
+                                        <span className="flex-1 truncate font-semibold text-gray-700">
+                                          {c.name}
+                                        </span>
+                                        <span className="text-exim-navy shrink-0">
+                                          {c.dial}
+                                        </span>
                                       </button>
                                     ))
                                   ) : (
@@ -785,9 +809,24 @@ export default function ContactUs() {
                   >
                     {isSubmitting ? (
                       <>
-                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                        <svg
+                          className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          />
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          />
                         </svg>
                         Sending...
                       </>
@@ -831,14 +870,14 @@ export default function ContactUs() {
                 {/* Interactive Map Iframe */}
                 <div className="w-full h-[280px] rounded-xl overflow-hidden border border-gray-100 shadow-inner relative z-10 bg-gray-50">
                   <iframe
-                    src="https://maps.google.com/maps?q=MY%20EXIM%20CONNECT%20TECHNOLOGOES%20PRIVATE%20LIMITED,%20Ground%20Floor,%20Plot%20No:%20221,%20Door%20No:%208/8,%20Elango%20Street,%20Alwarthirunagar,%20Chennai,%20Tamilnadu,%20India%20%E2%80%93%20600087&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                    src="https://maps.google.com/maps?q=MY%20EXIM%20CONNECT%20TECHNOLOGIES%20PRIVATE%20LIMITED,%20Ground%20Floor,%20Plot%20No:%20221,%20Door%20No:%208/8,%20Elango%20Street,%20Alwarthirunagar,%20Chennai,%20Tamilnadu,%20India%20%E2%80%93%20600087&t=&z=16&ie=UTF8&iwloc=&output=embed"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
                     allowFullScreen={true}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="MY EXIM CONNECT TECHNOLOGOES PRIVATE LIMITED Chennai Office Location"
+                    title="MY EXIM CONNECT TECHNOLOGIES PRIVATE LIMITED Chennai Office Location"
                   ></iframe>
                 </div>
               </div>
@@ -850,7 +889,7 @@ export default function ContactUs() {
                     Our Office
                   </h4>
                   <p className="text-xs font-black text-exim-navy">
-                    MY EXIM CONNECT TECHNOLOGOES PRIVATE LIMITED
+                    MY EXIM CONNECT TECHNOLOGIES PRIVATE LIMITED
                   </p>
                   <p className="text-xs font-semibold text-gray-500 leading-relaxed">
                     Ground Floor, Plot No: 221, Door No: 8/8,
@@ -863,7 +902,7 @@ export default function ContactUs() {
 
                 {/* Get Directions Button */}
                 <a
-                  href="https://maps.google.com/?q=MY+EXIM+CONNECT+TECHNOLOGOES+PRIVATE+LIMITED,+Ground+Floor,+Plot+No:+221,+Door+No:+8/8,+Elango+Street,+Alwarthirunagar,+Chennai,+Tamilnadu,+India+–+600087"
+                  href="https://maps.google.com/?q=MY+EXIM+CONNECT+TECHNOLOGIES+PRIVATE+LIMITED,+Ground+Floor,+Plot+No:+221,+Door+No:+8/8,+Elango+Street,+Alwarthirunagar,+Chennai,+Tamilnadu,+India+–+600087"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-[#f0f7f3] hover:bg-[#e2f1e9] text-exim-green font-bold text-xs px-4 py-3 rounded-xl flex items-center gap-1.5 transition-colors self-start sm:self-auto shrink-0 shadow-sm border border-[#e2ece7] cursor-pointer"
@@ -996,8 +1035,8 @@ export default function ContactUs() {
                 className="bg-[#25D366] hover:bg-[#1ebd59] text-white font-extrabold text-xs px-6 py-3 rounded-xl flex items-center gap-2 transition-all shadow-md hover:scale-105 active:scale-98 cursor-pointer"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.858.002-2.634-1.023-5.11-2.884-6.974C16.592 1.909 14.116.884 11.487.884c-5.443 0-9.867 4.42-9.871 9.858 0 1.93.505 3.811 1.464 5.483L1.993 22l6.096-1.599c1.6.87 3.298 1.328 4.558 1.328z"/>
-                  <path d="M17.472 14.382c-.3-.149-1.778-.878-2.046-.976-.269-.099-.463-.149-.658.149-.195.297-.752.975-.921 1.17-.17.195-.338.219-.638.07-.3-.15-1.267-.467-2.414-1.492-.893-.797-1.495-1.782-1.67-2.08-.175-.298-.018-.459.13-.607.135-.133.3-.347.45-.52.149-.174.199-.297.299-.497.099-.2.05-.376-.025-.525-.075-.149-.658-1.587-.901-2.172-.236-.57-.477-.492-.658-.5-.17-.008-.365-.01-.56-.01s-.51.074-.776.365c-.266.291-1.017.992-1.017 2.42 0 1.427 1.039 2.805 1.183 3.002.144.195 2.043 3.12 4.95 4.38.69.298 1.23.478 1.65.612.693.22 1.325.19 1.823.114.557-.083 1.778-.727 2.028-1.427.25-.7.25-1.3.175-1.427-.075-.127-.269-.201-.569-.35z"/>
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.858.002-2.634-1.023-5.11-2.884-6.974C16.592 1.909 14.116.884 11.487.884c-5.443 0-9.867 4.42-9.871 9.858 0 1.93.505 3.811 1.464 5.483L1.993 22l6.096-1.599c1.6.87 3.298 1.328 4.558 1.328z" />
+                  <path d="M17.472 14.382c-.3-.149-1.778-.878-2.046-.976-.269-.099-.463-.149-.658.149-.195.297-.752.975-.921 1.17-.17.195-.338.219-.638.07-.3-.15-1.267-.467-2.414-1.492-.893-.797-1.495-1.782-1.67-2.08-.175-.298-.018-.459.13-.607.135-.133.3-.347.45-.52.149-.174.199-.297.299-.497.099-.2.05-.376-.025-.525-.075-.149-.658-1.587-.901-2.172-.236-.57-.477-.492-.658-.5-.17-.008-.365-.01-.56-.01s-.51.074-.776.365c-.266.291-1.017.992-1.017 2.42 0 1.427 1.039 2.805 1.183 3.002.144.195 2.043 3.12 4.95 4.38.69.298 1.23.478 1.65.612.693.22 1.325.19 1.823.114.557-.083 1.778-.727 2.028-1.427.25-.7.25-1.3.175-1.427-.075-.127-.269-.201-.569-.35z" />
                 </svg>
                 Chat on WhatsApp
               </a>
