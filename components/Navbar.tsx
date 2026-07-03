@@ -27,7 +27,7 @@ export default function Navbar() {
             alt="MY EXIM Connect Logo"
             width={220}
             height={88}
-            className="h-22 w-auto object-contain group-hover:scale-105 transition-transform duration-200"
+            className="h-20 w-auto object-contain group-hover:scale-105 transition-transform duration-200"
             priority
           />
         </a>
