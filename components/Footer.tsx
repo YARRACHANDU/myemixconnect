@@ -15,7 +15,7 @@ export default function Footer() {
               alt="MY EXIM Connect Logo"
               width={160}
               height={64}
-              className="h-14 w-auto object-contain brightness-0 invert"
+              className="h-24 w-auto object-contain brightness-0 invert"
             />
           </a>
           <p className="mt-4 text-gray-400 text-sm leading-relaxed max-w-sm font-semibold">
